@@ -10,14 +10,18 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.exception.ApolloException
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.graphql.models.AllPlansQuery
+import com.planitnow.backend.ApolloQueryHandler
 import com.planitnow.databinding.FragmentHomeBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import android.widget.Toast.makeText as makeText1
 import android.widget.Toast.makeText as toastMakeText
@@ -26,6 +30,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
+    private lateinit var homeAdapter : HomeAdapter
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -39,31 +45,28 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
+        homeAdapter = HomeAdapter(homeViewModel)
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: FloatingActionButton = binding.gotoCreateplanbutton;
-            textView.setOnClickListener {
-                val apolloClient = ApolloClient(serverUrl = "http://10.0.2.2:8000/graphql")
-                   runBlocking {
-                       val response = try {
-                           val res = apolloClient.query(AllPlansQuery())
-                           Toast.makeText(context, res.data?.toString(), Toast.LENGTH_LONG).show()
-                           println("Aw yeah!" + res.data?.toString())
-                       } catch (e: ApolloException) {
-                           println("Oh no!")
-                           e.printStackTrace()
-                           Toast.makeText(context, "Oh no!", Toast.LENGTH_LONG).show()
-                       };
+        binding.listPlanRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.listPlanRecyclerView.adapter = homeAdapter
 
-
-                   }
-
-
+        val createPlanButton: FloatingActionButton = binding.gotoCreateplanbutton;
+            createPlanButton.setOnClickListener {
+                //TODO Enviar a Crear Plan
             }
 
         return root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+                 lifecycleScope.launchWhenResumed {
+                     homeViewModel.refreshPlans()
+                     homeAdapter.notifyDataSetChanged()}
+             }
 
     override fun onDestroyView() {
         super.onDestroyView()

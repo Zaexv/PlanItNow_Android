@@ -4,6 +4,8 @@ query AllPlans{
       title,
       description,
       initDate,
-      endHour
+      initHour,
+      endHour,
+      location
     }
 }
