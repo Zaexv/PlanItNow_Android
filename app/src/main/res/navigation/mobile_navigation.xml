@@ -7,9 +7,8 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.planitnow.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.planitnow.usecases.homefeed.HomeFragment"
+        android:label="@string/title_home" />
 
     <fragment
         android:id="@+id/navigation_search"
@@ -18,7 +17,7 @@
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_friends"
         android:name="com.planitnow.ui.notifications.NotificationsFragment"
         android:label="@string/title_friends"
         tools:layout="@layout/fragment_friends" />

@@ -1,0 +1,39 @@
+type Query {
+  allPlans: [PlanType]
+}
+
+type PlanType {
+  id: ID!
+
+  title: String!
+
+  description: String!
+
+  location: String!
+
+  initDate: Date!
+
+  initHour: Time!
+
+  endHour: Time!
+
+  isPublic: Boolean!
+}
+
+"""
+The `Date` scalar type represents a Date
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar Date
+
+"""
+The `Time` scalar type represents a Time value as
+specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar Time
+
+schema {
+  query: Query
+}

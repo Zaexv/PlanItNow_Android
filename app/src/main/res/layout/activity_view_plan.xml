@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/view_plan_image"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+
+        <TextView
+            android:id="@+id/view_plan_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:text="Titulo"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/view_plan_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:text="Descripcion"
+            android:textAlignment="viewStart" />
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/cardviewplan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:clipToPadding="true"
+            android:paddingEnd="10dp"
+            app:cardBackgroundColor="#FFFFFFFF"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/view_plan_schedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="De 4 a 8"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/view_plan_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Viernes 30 de Junio"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple_500"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/view_plan_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Casa de Edu"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/view_plan_button_delete"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="301dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="50dp"
+                android:background="@android:color/holo_red_dark"
+                android:text="Borrar Plan"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

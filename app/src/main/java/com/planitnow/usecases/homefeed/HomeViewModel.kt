@@ -1,4 +1,4 @@
-package com.planitnow.ui.home
+package com.planitnow.usecases.homefeed
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
