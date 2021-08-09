@@ -2,11 +2,13 @@ package com.planitnow.usecases.homefeed
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.graphql.models.AllPlansQuery
 import com.planitnow.databinding.CardPlanBinding
 import coil.api.load
 import com.planitnow.R
+import com.planitnow.usecases.viewplan.ViewPlanRouter
 
 
 class HomeAdapter(var homeViewModel : HomeViewModel) :
@@ -25,7 +27,6 @@ class HomeAdapter(var homeViewModel : HomeViewModel) :
     }
 
     var onEndOfListReached: (() -> Unit)? = null
-    var onItemClicked: ((AllPlansQuery.AllPlan) -> Unit)? = null
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val plan = homeViewModel.allPlans.get(position)
@@ -41,9 +42,8 @@ class HomeAdapter(var homeViewModel : HomeViewModel) :
             onEndOfListReached?.invoke()
         }
 
-        //TODO Modificar el listener
-        holder.binding.root.setOnClickListener {
-            onItemClicked?.invoke(plan)
+        holder.binding.root.setOnClickListener(){
+            ViewPlanRouter().launch(holder.binding.root.context)
         }
 
     }

@@ -19,6 +19,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.graphql.models.AllPlansQuery
 import com.planitnow.backend.ApolloQueryHandler
 import com.planitnow.databinding.FragmentHomeBinding
+import com.planitnow.usecases.createplan.CreatePlanRouter
+import com.planitnow.usecases.viewplan.ViewPlanRouter
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -52,11 +54,9 @@ class HomeFragment : Fragment() {
 
         binding.listPlanRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.listPlanRecyclerView.adapter = homeAdapter
-
-        val createPlanButton: FloatingActionButton = binding.gotoCreateplanbutton;
-            createPlanButton.setOnClickListener {
-                //TODO Enviar a Crear Plan
-            }
+        binding.gotoCreateplanbutton.setOnClickListener() {
+            CreatePlanRouter().launch(requireContext())
+        }
 
         return root
     }
