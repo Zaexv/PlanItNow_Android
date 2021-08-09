@@ -14,5 +14,4 @@ class ViewPlanRouter: BaseActivityRouter {
         activity.startActivity(intent(activity))
         (activity as Activity).overridePendingTransition(R.anim.activity_in, R.anim.activity_out)
     }
-
 }

@@ -20,9 +20,6 @@ class ViewPlanActivity : AppCompatActivity() {
 
         binding = ActivityViewPlanBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-
     }
 
 
