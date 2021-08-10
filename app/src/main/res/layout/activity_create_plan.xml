@@ -14,99 +14,172 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="109dp"
             tools:layout_editor_absoluteY="109dp">
-
-            <EditText
-                android:id="@+id/view_cp_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:hint="Título"
-                android:text="" />
-
-            <EditText
-                android:id="@+id/view_cp_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:hint="Descripción"
-                android:text="" />
-
-            <EditText
-                android:id="@+id/view_cp_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Localización"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/to_delete1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Elige un dia" />
-
-            <CalendarView
-                android:id="@+id/calendarView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/to_delete2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Horario de" />
-
-            <EditText
-                android:id="@+id/view_cp_init_hour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="8"
-                android:inputType="time" />
-
-            <TextView
-                android:id="@+id/to_delete3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="a" />
-
-            <EditText
-                android:id="@+id/view_cp_end_hour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="15"
-                android:inputType="time" />
-
-            <TextView
-                android:id="@+id/to_delete4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pulsa Abajo para añadir imagen" />
-
-            <ImageButton
-                android:id="@+id/view_cp_add_image"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_input_add" />
 
             <Switch
                 android:id="@+id/view_cp_public"
                 android:layout_width="129dp"
                 android:layout_height="wrap_content"
-                android:text="Público" />
+                android:layout_gravity="end"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:minHeight="48dp"
+                android:text="Público"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <EditText
+                android:id="@+id/view_cp_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center_horizontal"
+                android:hint="Título"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/view_cp_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:ems="10"
+                android:hint="Descripción"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/view_cp_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:ems="10"
+                android:hint="Localización"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                android:text="" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/view_cp_from"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center_horizontal"
+                    android:text="@string/from"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/view_cp_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center_horizontal"
+                    android:text="@string/to"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/view_cp_initHour"
+                    android:focusable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_horizontal"
+                    android:inputType="time"
+                    android:minHeight="48dp"
+                    android:hint="8:50"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <EditText
+                    android:id="@+id/view_cp_endHour"
+                    android:focusable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_horizontal"
+                    android:hint="13:00"
+                    android:inputType="time"
+                    android:minHeight="48dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/view_cp_theday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center_horizontal"
+                android:text="@string/theDay"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
             <Button
                 android:id="@+id/view_cp_button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 android:text="Crear Plan" />
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

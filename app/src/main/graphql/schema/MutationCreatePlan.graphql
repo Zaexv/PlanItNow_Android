@@ -1,0 +1,9 @@
+mutation createPlan($description: String!, $endHour: Time!, $initDate: Date!, $initHour: Time!, $isPublic: Boolean = null, $location: String!, $title: String!){
+    createPlan(description: $description, endHour: $endHour, initDate: $initDate, initHour: $initHour, isPublic: $isPublic, location:$location, title: $title){
+        plan {
+            id,
+            title,
+            description,
+        }
+    }
+}

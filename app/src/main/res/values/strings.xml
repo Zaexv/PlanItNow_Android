@@ -17,7 +17,11 @@
     <string name="login">Iniciar Sesión</string>
     <string name="login_error">Tu nombre de usuario o contraseña son incorrectos</string>
     <string name="maxAttempts">Maximo Alcanzado</string>
-    <string name="loginmaxAttempts">Maximo Alcanzado</string>
+    <string name="loginmaxAttempts">Máximo Alcanzado</string>
     <string name="loginMaxAttemptsMessage">"Has alcanzado el número máximo de intentos para el login. Por favor inténtalo más tarde. "</string>
     <string name="accept">Aceptar</string>
+    <string name="from">De</string>
+    <string name="to">a</string>
+    <string name="theDay">El día</string>
+
 </resources>
