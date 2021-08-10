@@ -15,4 +15,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="login">Iniciar Sesión</string>
+    <string name="login_error">Tu nombre de usuario o contraseña son incorrectos</string>
+    <string name="maxAttempts">Maximo Alcanzado</string>
+    <string name="loginmaxAttempts">Maximo Alcanzado</string>
+    <string name="loginMaxAttemptsMessage">"Has alcanzado el número máximo de intentos para el login. Por favor inténtalo más tarde. "</string>
+    <string name="accept">Aceptar</string>
 </resources>

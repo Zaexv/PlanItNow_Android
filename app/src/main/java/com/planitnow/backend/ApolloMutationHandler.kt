@@ -5,11 +5,12 @@ import com.apollographql.apollo3.api.ApolloResponse
 import com.apollographql.apollo3.network.http.HttpNetworkTransport
 import com.graphql.models.AllPlansQuery
 import com.graphql.models.TokenAuthMutation
+import com.planitnow.model.session.Session
 
 object ApolloMutationHandler {
 
     private var SERVER_ADDRESS = "http://10.0.2.2:8000/graphql"
-    private var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjI4NTIzOTI0LCJvcmlnSWF0IjoxNjI4NTIzNjI0fQ.4gv7ok4cS5gxSJm2tYJm8hwik0I6_3ta1pubCBKvP4g"
+    private var token = Session.instance.getToken()
     private var apolloClient = ApolloClient(
         networkTransport = HttpNetworkTransport(
             serverUrl = SERVER_ADDRESS,

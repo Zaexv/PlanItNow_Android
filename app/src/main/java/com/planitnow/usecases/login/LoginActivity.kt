@@ -1,41 +1,57 @@
 package com.planitnow.usecases.login
 
 import android.os.Bundle
-import android.view.Window
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import com.planitnow.R
 import com.planitnow.databinding.ActivityLoginBinding
-import com.planitnow.databinding.ActivityViewPlanBinding
-import com.planitnow.databinding.FragmentHomeBinding
 import com.planitnow.model.session.Session
-import com.planitnow.usecases.homefeed.HomeViewModel
 import com.planitnow.usecases.mainactivity.MainActivityRouter
 import kotlinx.coroutines.runBlocking
 
-class LoginActivity: AppCompatActivity() {
-    private lateinit var homeViewModel: HomeViewModel
-    private lateinit var binding : ActivityLoginBinding
+class LoginActivity : AppCompatActivity() {
+    private val loginViewModel: LoginViewModel by viewModels()
+    private lateinit var binding: ActivityLoginBinding
+    private var maxAttempts = 3;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
+
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
-        binding.loginButton.setOnClickListener(){
-
-            val ok = lifecycleScope.launchWhenResumed {
-                val user = binding.loginEmail.text.toString()
-                val password = binding.loginPassword.text.toString()
-                Session.instance.doLogin(user,password)
+        binding.loginButton.setOnClickListener() {
+            if (loginViewModel.hasMaxAttempts()) {
+                login();
+            } else {
+                showMaxAttemptsDialog()
             }
-            //TODO hacer que sólo pase a la siguiente actividad si estoy loggeado
-            if(!Session.instance.getToken().isEmpty()){
-                MainActivityRouter().launch(this)
-            }
-
         }
-
         setContentView(binding.root)
+    }
+
+    private fun login(){
+        var logged = false;
+        runBlocking {
+            val user = binding.loginEmail.text.toString()
+            val password = binding.loginPassword.text.toString()
+            logged = Session.instance.doLogin(user, password)
+            loginViewModel.decreaseAttempts()
+        }
+        if (logged) {
+            MainActivityRouter().launch(this)
+        } else {
+            Toast.makeText(this, getText(R.string.login_error),Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun showMaxAttemptsDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(R.string.loginmaxAttempts)
+        builder.setMessage(R.string.loginMaxAttemptsMessage)
+        builder.setPositiveButton(R.string.accept, null).show()
     }
 
 }

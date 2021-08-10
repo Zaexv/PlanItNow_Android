@@ -13,15 +13,17 @@ class Session {
         val instance = Session()
     }
 
-    suspend fun doLogin(username: String, password: String) {
-
+    suspend fun doLogin(username: String, password: String) : Boolean {
         val res = try {
             ApolloMutationHandler.tokenAuth(username, password)
         } catch ( e: ApolloException){
-            return;
+            return false;
         }
-        if (!res.hasErrors()) {
+        return if (!res.hasErrors()) {
             token = res.data?.tokenAuth!!.token
+            true;
+        } else {
+            false
         }
      }
 
