@@ -1,6 +1,8 @@
 package com.planitnow.model.session
 
 import com.apollographql.apollo3.exception.ApolloException
+import com.planitnow.backend.ApolloClientSingleton
+import com.planitnow.backend.ApolloLoginHandler
 import com.planitnow.backend.ApolloMutationHandler
 import com.planitnow.backend.ApolloQueryHandler
 import kotlinx.coroutines.coroutineScope
@@ -15,12 +17,14 @@ class Session {
 
     suspend fun doLogin(username: String, password: String) : Boolean {
         val res = try {
-            ApolloMutationHandler.tokenAuth(username, password)
-        } catch ( e: ApolloException){
+            ApolloLoginHandler.tokenAuth(username, password)
+        } catch (e: ApolloException){
             return false;
         }
+
         return if (!res.hasErrors()) {
-            token = res.data?.tokenAuth!!.token
+            instance.token = res.data?.tokenAuth!!.token
+            ApolloClientSingleton.instance
             true;
         } else {
             false
@@ -28,7 +32,8 @@ class Session {
      }
 
     fun getToken():String{
-        return token
+        println("Mi Token es:" + instance.token)
+        return instance.token
     }
 
 }

@@ -9,17 +9,8 @@ import com.planitnow.model.session.Session
 
 object ApolloQueryHandler {
 
-    private var SERVER_ADDRESS = "http://10.0.2.2:8000/graphql"
-    private var token = Session.instance.getToken()
-    private var apolloClient = ApolloClient(
-        networkTransport = HttpNetworkTransport(
-            serverUrl = SERVER_ADDRESS,
-            interceptors = listOf(AuthorizationInterceptor(token))
-            )
-        )
-
     suspend fun getAllPlans(): ApolloResponse<AllPlansQuery.Data> {
-        return apolloClient.query(AllPlansQuery())
+        return ApolloClientSingleton.instance.apolloClient.query(AllPlansQuery())
     }
 
 

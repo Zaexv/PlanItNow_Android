@@ -23,5 +23,7 @@
     <string name="from">De</string>
     <string name="to">a</string>
     <string name="theDay">El día</string>
+    <string name="success_creating_plan">Tu plan se ha creado ;)</string>
+    <string name="error_creating_plan">¡Vaya! Ha habido un error creando tu plan.</string>
 
 </resources>
