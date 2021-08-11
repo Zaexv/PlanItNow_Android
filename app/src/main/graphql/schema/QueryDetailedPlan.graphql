@@ -1,0 +1,16 @@
+query detailedPlan($id: Int!){
+   detailedPlan(id: $id){
+       id,
+       title,
+       description,
+       initDate,
+       initHour,
+       endHour,
+       location,
+       owner {
+           id,
+           username
+       }
+   }
+
+}

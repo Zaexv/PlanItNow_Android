@@ -1,5 +1,7 @@
 package com.planitnow.usecases.homefeed
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -8,6 +10,7 @@ import com.graphql.models.AllPlansQuery
 import com.planitnow.databinding.CardPlanBinding
 import coil.api.load
 import com.planitnow.R
+import com.planitnow.usecases.viewplan.ViewPlanActivity
 import com.planitnow.usecases.viewplan.ViewPlanRouter
 
 
@@ -43,7 +46,9 @@ class HomeAdapter(var homeViewModel : HomeViewModel) :
         }
 
         holder.binding.root.setOnClickListener(){
-            ViewPlanRouter().launch(holder.binding.root.context)
+            ViewPlanRouter().launchToId(holder.binding.root.context,plan.id)
+            println("Intentando navegar a $plan.id")
+
         }
 
     }

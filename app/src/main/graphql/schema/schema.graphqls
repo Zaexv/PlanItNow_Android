@@ -4,55 +4,23 @@ type Query {
   me: UserType
 
   allPlans: [PlanType]
+
+  detailedPlan(id: Int!): PlanType
 }
 
 type UserType {
   id: ID!
 
-  password: String!
-
-  lastLogin: DateTime
-
-  """
-  Designates that this user has all permissions without explicitly assigning them.
-  """
-  isSuperuser: Boolean!
-
   """
   Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
   """
   username: String!
-
-  firstName: String!
-
-  lastName: String!
-
-  email: String!
-
-  """
-  Designates whether the user can log into this admin site.
-  """
-  isStaff: Boolean!
-
-  """
-  Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-  """
-  isActive: Boolean!
-
-  dateJoined: DateTime!
-
-  planSet: [PlanType!]!
 }
-
-"""
-The `DateTime` scalar type represents a DateTime
-value as specified by
-[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
-"""
-scalar DateTime
 
 type PlanType {
   id: ID!
+
+  owner: UserType!
 
   title: String!
 
