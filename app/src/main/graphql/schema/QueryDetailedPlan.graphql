@@ -7,6 +7,7 @@ query detailedPlan($id: Int!){
        initHour,
        endHour,
        location,
+       urlPlanPicture
        owner {
            id,
            username

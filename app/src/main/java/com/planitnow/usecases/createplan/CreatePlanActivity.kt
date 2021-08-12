@@ -39,6 +39,7 @@ class CreatePlanActivity : AppCompatActivity() {
             calendar.set(year, month, dayOfMonth)
         }
 
+
         setContentView(binding.root)
 
     }
@@ -51,6 +52,7 @@ class CreatePlanActivity : AppCompatActivity() {
         val endHour = binding.viewCpEndHour.text.toString()
         val isPublic = binding.viewCpPublic.isActivated
         val initDate = SimpleDateFormat("yyyy-MM-dd").format(calendar.time)
+        val urlPlanPicture = binding.viewCpImageURL.text.toString()
 
         //TODO refactor a ViewModel
         var successQuery = false
@@ -63,7 +65,8 @@ class CreatePlanActivity : AppCompatActivity() {
                     initHour = initHour,
                     endHour = endHour,
                     initDate = initDate,
-                    isPublic = isPublic
+                    isPublic = isPublic,
+                    urlPlanPicture = urlPlanPicture
                 )
                 successQuery = true
             } catch(e: ApolloException) {
@@ -81,7 +84,9 @@ class CreatePlanActivity : AppCompatActivity() {
 
     private fun buildTimePicker(view: EditText) {
         val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-            val timeString = if (hour < 10)  "0$hour:$minute" else "$hour:$minute"
+            val hourString = if(hour < 10) "0$hour" else "$hour"
+            val minuteString = if(minute < 10) "0$minute" else "$minute"
+            val timeString = "$hourString:$minuteString"
             view.setText(timeString)
         }
         TimePickerDialog(this, timeSetListener, 4, 20, true).show()

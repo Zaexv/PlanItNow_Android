@@ -35,6 +35,8 @@ type PlanType {
   endHour: Time!
 
   isPublic: Boolean
+
+  urlPlanPicture: String
 }
 
 """
@@ -52,7 +54,7 @@ specified by
 scalar Time
 
 type Mutation {
-  createPlan(description: String!, endHour: Time!, initDate: Date!, initHour: Time!, isPublic: Boolean = null, location: String!, title: String!): CreatePlan
+  createPlan(description: String!, endHour: Time!, initDate: Date!, initHour: Time!, isPublic: Boolean = null, location: String!, title: String!, urlPlanPicture: String = null): CreatePlan
 
   createUser(email: String!, password: String!, username: String!): CreateUser
 

@@ -53,7 +53,7 @@ class ViewPlanActivity : AppCompatActivity() {
         binding.viewPlanDate.text = detailedPlan.initDate.toString()
         binding.viewPlanInitHour.text = detailedPlan.initHour.toString()
         binding.viewPlanEndHour.text = detailedPlan.endHour.toString()
-        binding.viewPlanImage.load("https://image.pngaaa.com/519/2451519-middle.png"){
+        binding.viewPlanImage.load(detailedPlan.urlPlanPicture){
                 placeholder(R.drawable.ic_launcher_foreground)
             }
         binding.viewPlanOwnerName.text = detailedPlan.owner.username

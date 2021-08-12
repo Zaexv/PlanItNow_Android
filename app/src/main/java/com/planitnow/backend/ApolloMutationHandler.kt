@@ -18,7 +18,8 @@ object ApolloMutationHandler {
         initHour:String,
         endHour:String,
         initDate:String,
-        isPublic: Boolean
+        isPublic: Boolean,
+        urlPlanPicture: String
     ): ApolloResponse<CreatePlanMutation.Data> {
         return ApolloClientSingleton.instance.apolloClient.mutate(CreatePlanMutation(
             description = description,
@@ -27,7 +28,8 @@ object ApolloMutationHandler {
             initHour = initHour,
             endHour = endHour,
             initDate = initDate,
-            isPublic = Optional.Present(isPublic)
+            isPublic = Optional.Present(isPublic),
+            urlPlanPicture = Optional.Present(urlPlanPicture)
         ))
     }
 }

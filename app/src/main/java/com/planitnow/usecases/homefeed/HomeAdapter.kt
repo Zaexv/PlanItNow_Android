@@ -38,7 +38,7 @@ class HomeAdapter(var homeViewModel : HomeViewModel) :
         holder.binding.planHourTextView.text = " " + plan.initHour + " " + plan.endHour
         holder.binding.planDateTextView.text = plan.initDate.toString()
         holder.binding.planLocationTextView.text = plan.location
-        holder.binding.planImageView.load("https://res.cloudinary.com/demo/image/upload/c_crop,h_200,w_300/sample.jpg"){
+        holder.binding.planImageView.load(plan.urlPlanPicture){
             placeholder(R.drawable.ic_launcher_foreground)
         }
         if (position == homeViewModel.allPlans.size - 1) {

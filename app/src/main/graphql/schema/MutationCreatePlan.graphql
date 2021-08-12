@@ -1,5 +1,7 @@
-mutation createPlan($description: String!, $endHour: Time!, $initDate: Date!, $initHour: Time!, $isPublic: Boolean = null, $location: String!, $title: String!){
-    createPlan(description: $description, endHour: $endHour, initDate: $initDate, initHour: $initHour, isPublic: $isPublic, location:$location, title: $title){
+mutation createPlan($description: String!, $endHour: Time!, $initDate: Date!, $initHour: Time!,
+    $isPublic: Boolean = null, $location: String!, $title: String!, $urlPlanPicture: String = null){
+    createPlan(description: $description, endHour: $endHour, initDate: $initDate, initHour: $initHour,
+        isPublic: $isPublic, location:$location, title: $title, urlPlanPicture: $urlPlanPicture){
         plan {
             id,
             title,
