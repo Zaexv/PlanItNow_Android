@@ -8,12 +8,12 @@
 
     <item
         android:id="@+id/navigation_search"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_travel_explore_black_24dp"
         android:title="@string/title_search" />
 
     <item
         android:id="@+id/navigation_friends"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_people_outline_black_24dp"
         android:title="@string/title_friends" />
 
 </menu>
