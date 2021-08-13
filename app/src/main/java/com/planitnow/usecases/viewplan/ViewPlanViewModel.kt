@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.apollographql.apollo3.api.ApolloResponse
 import com.graphql.models.DetailedPlanQuery
 import com.planitnow.R
+import com.planitnow.backend.ApolloMutationHandler
 import com.planitnow.backend.ApolloQueryHandler
 import com.planitnow.usecases.base.BaseActivityRouter
 
@@ -23,5 +24,14 @@ class ViewPlanViewModel  : ViewModel() {
         detailedPlan = detailedPlanQuery.data?.detailedPlan!!
 
         return detailedPlan
+    }
+
+    suspend fun deleteViewingPlan(): Boolean {
+        val deletedPlan = ApolloMutationHandler.deletePlan(Integer.parseInt(detailedPlan.id))
+        if(deletedPlan.hasErrors()){
+            println(deletedPlan.errors.toString())
+            return false
+        }
+        return deletedPlan.data?.deletePlan?.ok!!
     }
 }

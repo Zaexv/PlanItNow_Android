@@ -56,6 +56,8 @@ scalar Time
 type Mutation {
   createPlan(description: String!, endHour: Time!, initDate: Date!, initHour: Time!, isPublic: Boolean = null, location: String!, title: String!, urlPlanPicture: String = null): CreatePlan
 
+  deletePlan(id: Int!): DeletePlan
+
   createUser(email: String!, password: String!, username: String!): CreateUser
 
   """
@@ -70,6 +72,10 @@ type Mutation {
 
 type CreatePlan {
   plan: PlanType
+}
+
+type DeletePlan {
+  ok: Boolean
 }
 
 type CreateUser {

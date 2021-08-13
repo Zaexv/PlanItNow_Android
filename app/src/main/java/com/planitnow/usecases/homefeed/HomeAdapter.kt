@@ -35,7 +35,9 @@ class HomeAdapter(var homeViewModel : HomeViewModel) :
         val plan = homeViewModel.allPlans.get(position)
         holder.binding.planTitleTextView.text = plan.title
         holder.binding.planDescriptionTextView.text = plan.description
-        holder.binding.planHourTextView.text = " " + plan.initHour + " " + plan.endHour
+        val initHour = plan.initHour.toString().subSequence(0,5)
+        val endHour = plan.endHour.toString().subSequence(0,5)
+        holder.binding.planHourTextView.text = "De $initHour a $endHour"
         holder.binding.planDateTextView.text = plan.initDate.toString()
         holder.binding.planLocationTextView.text = plan.location
         holder.binding.planImageView.load(plan.urlPlanPicture){

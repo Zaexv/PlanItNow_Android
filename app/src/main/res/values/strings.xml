@@ -25,6 +25,8 @@
     <string name="theDay">El día</string>
     <string name="success_creating_plan">Tu plan se ha creado ;)</string>
     <string name="error_creating_plan">¡Vaya! Ha habido un error creando tu plan.</string>
+    <string name="error_deleting_plan">¡Vaya! Ha habido un error eliminando tu plan.</string>
+    <string name="success_deleting_plan">Se ha eliminado el plan: </string>
     <string name="created_by">Creado por</string>
 
 </resources>

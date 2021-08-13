@@ -2,6 +2,7 @@ package com.planitnow.usecases.viewplan
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -18,11 +19,13 @@ import com.planitnow.databinding.ActivityMainBinding
 import com.planitnow.databinding.ActivityViewPlanBinding
 import com.planitnow.model.session.Session
 import com.planitnow.usecases.login.LoginViewModel
+import com.planitnow.usecases.mainactivity.MainActivityRouter
+import kotlinx.coroutines.runBlocking
 
 class ViewPlanActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityViewPlanBinding
-    private val viewPlanViewModel : ViewPlanViewModel by viewModels()
+    private val viewPlanViewModel: ViewPlanViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +43,31 @@ class ViewPlanActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        if(viewPlanViewModel.detailedPlan.owner.id == Session.instance.me.id) {
+        if (viewPlanViewModel.detailedPlan.owner.id == Session.instance.me.id) {
+            binding.viewPlanOwnerCard.visibility = View.GONE
             binding.viewPlanButtonDelete.visibility = View.VISIBLE
-            binding.viewPlanOwnerCard.visibility = View.INVISIBLE
+            binding.viewPlanButtonDelete.setOnClickListener() {
+
+                //TODO añadir cuadro de Diálogo ¿Seguro que quieres borrar el plan?
+
+                runBlocking {
+                    val ok = viewPlanViewModel.deleteViewingPlan()
+                    if (ok) {
+                        Toast.makeText(
+                            this@ViewPlanActivity,
+                            resources.getString(R.string.success_deleting_plan) + " " + viewPlanViewModel.detailedPlan.title,
+                            Toast.LENGTH_LONG
+                        ).show()
+                        MainActivityRouter().launch(this@ViewPlanActivity)
+                    } else {
+                        Toast.makeText(
+                            this@ViewPlanActivity,
+                            R.string.error_deleting_plan,
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            }
         }
     }
 
@@ -51,13 +76,13 @@ class ViewPlanActivity : AppCompatActivity() {
         binding.viewPlanDescription.text = detailedPlan.description
         binding.viewPlanLocation.text = detailedPlan.location
         binding.viewPlanDate.text = detailedPlan.initDate.toString()
-        binding.viewPlanInitHour.text = detailedPlan.initHour.toString()
-        binding.viewPlanEndHour.text = detailedPlan.endHour.toString()
-        binding.viewPlanImage.load(detailedPlan.urlPlanPicture){
-                placeholder(R.drawable.ic_launcher_foreground)
-            }
+        binding.viewPlanInitHour.text = detailedPlan.initHour.toString().subSequence(0, 5)
+        binding.viewPlanEndHour.text = detailedPlan.endHour.toString().subSequence(0, 5)
+        binding.viewPlanImage.load(detailedPlan.urlPlanPicture) {
+            placeholder(R.drawable.ic_launcher_foreground)
+        }
         binding.viewPlanOwnerName.text = detailedPlan.owner.username
-        binding.viewPlanOwnerProfilePicture.load("https://streammentor.com/wp-content/uploads/2020/12/output-onlinepngtools9.png"){
+        binding.viewPlanOwnerProfilePicture.load("https://streammentor.com/wp-content/uploads/2020/12/output-onlinepngtools9.png") {
             placeholder(R.drawable.ic_home_black_24dp)
         }
     }
