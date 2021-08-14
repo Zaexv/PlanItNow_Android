@@ -7,6 +7,7 @@ import com.apollographql.apollo3.network.http.HttpNetworkTransport
 import com.graphql.models.AllPlansQuery
 import com.graphql.models.DetailedPlanQuery
 import com.graphql.models.MeQuery
+import com.graphql.models.MyFriendsQuery
 import com.planitnow.model.session.Session
 
 object ApolloQueryHandler {
@@ -23,6 +24,9 @@ object ApolloQueryHandler {
         return ApolloClientSingleton.instance.apolloClient.query(MeQuery())
     }
 
+    suspend fun getMyFriends(): ApolloResponse<MyFriendsQuery.Data>{
+        return ApolloClientSingleton.instance.apolloClient.query(MyFriendsQuery())
+    }
 
 
 }

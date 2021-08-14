@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.graphql.models.AllPlansQuery
 import com.planitnow.databinding.CardPlanBinding
 import coil.api.load
+import coil.transform.BlurTransformation
+import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
 import com.planitnow.R
 import com.planitnow.usecases.viewplan.ViewPlanActivity
 import com.planitnow.usecases.viewplan.ViewPlanRouter
@@ -42,6 +45,7 @@ class HomeAdapter(var homeViewModel : HomeViewModel) :
         holder.binding.planLocationTextView.text = plan.location
         holder.binding.planImageView.load(plan.urlPlanPicture){
             placeholder(R.drawable.ic_launcher_foreground)
+            transformations(RoundedCornersTransformation(10f))
         }
         if (position == homeViewModel.allPlans.size - 1) {
             onEndOfListReached?.invoke()

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:adjustViewBounds="true"
-            android:scaleType="centerInside"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/ic_dashboard_black_24dp" />
 
         <TextView
@@ -53,6 +53,7 @@
             app:contentPadding="10dp">
 
             <LinearLayout
+                android:id="@+id/view_cp_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">

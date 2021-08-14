@@ -1,0 +1,10 @@
+query MyFriends {
+    myFriends{
+        id,
+        publicUsername,
+        urlProfilePicture,
+        biography,
+        residence,
+    }
+}
+

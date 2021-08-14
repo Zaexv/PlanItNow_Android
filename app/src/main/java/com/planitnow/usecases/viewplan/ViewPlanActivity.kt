@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import coil.api.load
+import coil.transform.CircleCropTransformation
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.graphql.models.DetailedPlanQuery
 import com.planitnow.R
@@ -84,6 +85,7 @@ class ViewPlanActivity : AppCompatActivity() {
         binding.viewPlanOwnerName.text = detailedPlan.owner.username
         binding.viewPlanOwnerProfilePicture.load("https://streammentor.com/wp-content/uploads/2020/12/output-onlinepngtools9.png") {
             placeholder(R.drawable.ic_home_black_24dp)
+            transformations(CircleCropTransformation())
         }
     }
 
