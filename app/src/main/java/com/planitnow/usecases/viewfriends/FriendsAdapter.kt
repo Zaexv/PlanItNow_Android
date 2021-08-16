@@ -32,7 +32,6 @@ class FriendsAdapter(var friendsViewModel: FriendsViewModel) :
         holder.binding.root.setOnClickListener(){
             Toast.makeText(holder.itemView.context,"Clicked friend!:) $friend",Toast.LENGTH_LONG).show()
         }
-
     }
 
     override fun getItemCount(): Int {

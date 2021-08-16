@@ -18,6 +18,7 @@ class CreatePlanActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreatePlanBinding
     private var calendar: Calendar = Calendar.getInstance()
+    private  var publicActive: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,6 +40,10 @@ class CreatePlanActivity : AppCompatActivity() {
             calendar.set(year, month, dayOfMonth)
         }
 
+        binding.viewCpPublic.setOnCheckedChangeListener{ _, isChecked ->
+            publicActive = isChecked
+        }
+
 
         setContentView(binding.root)
 
@@ -50,7 +55,6 @@ class CreatePlanActivity : AppCompatActivity() {
         val location = binding.viewCpLocation.text.toString()
         val initHour = binding.viewCpInitHour.text.toString()
         val endHour = binding.viewCpEndHour.text.toString()
-        val isPublic = binding.viewCpPublic.isActivated
         val initDate = SimpleDateFormat("yyyy-MM-dd").format(calendar.time)
         val urlPlanPicture = binding.viewCpImageURL.text.toString()
 
@@ -65,7 +69,7 @@ class CreatePlanActivity : AppCompatActivity() {
                     initHour = initHour,
                     endHour = endHour,
                     initDate = initDate,
-                    isPublic = isPublic,
+                    isPublic = publicActive,
                     urlPlanPicture = urlPlanPicture
                 )
                 successQuery = true
