@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
-    private lateinit var homeAdapter : HomeAdapter
+    private lateinit var homeAdapter: HomeAdapter
 
 
     // This property is only valid between onCreateView and
@@ -64,10 +64,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-                 lifecycleScope.launchWhenResumed {
-                     homeViewModel.refreshPlans()
-                     homeAdapter.notifyDataSetChanged()}
-             }
+        lifecycleScope.launchWhenResumed {
+            homeViewModel.refreshPlans()
+            homeAdapter.notifyDataSetChanged()
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

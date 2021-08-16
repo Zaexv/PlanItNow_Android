@@ -1,5 +1,8 @@
 query MyFriends {
     myFriends{
+        user {
+            username
+        }
         id,
         publicUsername,
         urlProfilePicture,

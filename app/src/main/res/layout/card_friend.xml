@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_plan_basic_card"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:animateLayoutChanges="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="#FFFFFFFF"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="1dp"
+    app:cardUseCompatPadding="false"
+    app:contentPadding="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/friendBackgroundImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:background="@color/cardview_shadow_end_color"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/friendProfilePictureImageView"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="10dp"
+                android:scaleType="fitXY"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toRightOf="@id/friendProfilePictureImageView"
+                android:orientation="vertical"
+                android:paddingStart="5dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:id="@+id/friendPUsernameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Cachalote Macho"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/friendUsernameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@Edu"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/friendBiography"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Me gusta jugar al WoW!:)" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

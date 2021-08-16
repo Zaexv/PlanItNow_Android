@@ -17,8 +17,8 @@ import com.planitnow.usecases.viewplan.ViewPlanActivity
 import com.planitnow.usecases.viewplan.ViewPlanRouter
 
 
-class HomeAdapter(var homeViewModel : HomeViewModel) :
-    RecyclerView.Adapter<HomeAdapter.ViewHolder>(){
+class HomeAdapter(var homeViewModel: HomeViewModel) :
+    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
 
     class ViewHolder(val binding: CardPlanBinding) : RecyclerView.ViewHolder(binding.root)
@@ -38,12 +38,12 @@ class HomeAdapter(var homeViewModel : HomeViewModel) :
         val plan = homeViewModel.allPlans.get(position)
         holder.binding.planTitleTextView.text = plan.title
         holder.binding.planDescriptionTextView.text = plan.description
-        val initHour = plan.initHour.toString().subSequence(0,5)
-        val endHour = plan.endHour.toString().subSequence(0,5)
+        val initHour = plan.initHour.toString().subSequence(0, 5)
+        val endHour = plan.endHour.toString().subSequence(0, 5)
         holder.binding.planHourTextView.text = "De $initHour a $endHour"
         holder.binding.planDateTextView.text = plan.initDate.toString()
         holder.binding.planLocationTextView.text = plan.location
-        holder.binding.planImageView.load(plan.urlPlanPicture){
+        holder.binding.planImageView.load(plan.urlPlanPicture) {
             placeholder(R.drawable.ic_launcher_foreground)
             transformations(RoundedCornersTransformation(10f))
         }
@@ -51,14 +51,12 @@ class HomeAdapter(var homeViewModel : HomeViewModel) :
             onEndOfListReached?.invoke()
         }
 
-        holder.binding.root.setOnClickListener(){
-            ViewPlanRouter().launchToId(holder.binding.root.context,plan.id)
+        holder.binding.root.setOnClickListener() {
+            ViewPlanRouter().launchToId(holder.binding.root.context, plan.id)
             println("Intentando navegar a $plan.id")
-
         }
 
     }
-
 
 
 }

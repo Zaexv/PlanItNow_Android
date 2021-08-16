@@ -16,9 +16,9 @@ class HomeViewModel : ViewModel() {
         val res = try {
             ApolloQueryHandler.getAllPlans()
         } catch ( e: ApolloException){
-            return;
+            return
         }
-        val plans = res.data?.allPlans?.filterNotNull();
+        val plans = res.data?.allPlans?.filterNotNull()
         if (plans != null && plans.isNotEmpty() && !res.hasErrors()) {
             allPlans = plans
         }
