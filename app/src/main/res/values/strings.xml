@@ -28,5 +28,7 @@
     <string name="error_deleting_plan">¡Vaya! Ha habido un error eliminando tu plan.</string>
     <string name="success_deleting_plan">Se ha eliminado el plan: </string>
     <string name="created_by">Creado por</string>
+    <string name="add_friend">Añadir Amigo</string>
+    <string name="notifications">Notificaciones</string>
 
 </resources>

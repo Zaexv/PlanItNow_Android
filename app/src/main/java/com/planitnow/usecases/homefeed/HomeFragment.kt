@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +20,7 @@ import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.exception.ApolloException
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.graphql.models.AllPlansQuery
+import com.planitnow.R
 import com.planitnow.backend.ApolloQueryHandler
 import com.planitnow.databinding.FragmentHomeBinding
 import com.planitnow.usecases.createplan.CreatePlanRouter
@@ -39,6 +42,8 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var toolbar: Toolbar
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +52,7 @@ class HomeFragment : Fragment() {
     ): View? {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
+
 
         homeAdapter = HomeAdapter(homeViewModel)
 
@@ -65,6 +71,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launchWhenResumed {
+            initializeToolbar()
             homeViewModel.refreshPlans()
             homeAdapter.notifyDataSetChanged()
         }
@@ -74,4 +81,20 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun initializeToolbar(){
+        toolbar = (activity as AppCompatActivity).findViewById<Toolbar>(R.id.main_toolbar)
+        toolbar.menu.clear()
+        toolbar.inflateMenu(R.menu.home_menu)
+        toolbar.setOnMenuItemClickListener{ item ->
+            when (item.itemId){
+                R.id.action_add_friend -> Toast.makeText(toolbar.context,"Añade amigo :)",Toast.LENGTH_LONG).show()
+                R.id.action_notifications -> Toast.makeText(toolbar.context,"Notificaçao",Toast.LENGTH_LONG).show()
+                else -> Toast.makeText(toolbar.context,"purzao",Toast.LENGTH_LONG).show()
+            }
+            false
+        }
+
+    }
+
 }

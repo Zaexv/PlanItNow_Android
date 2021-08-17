@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:gravity="center"
+    android:minHeight="?attr/actionBarSize"
+    android:navigationContentDescription="@string/abc_action_bar_up_description"
+    android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    android:title="PlanItNow!"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="5dp"
+        app:srcCompat="@drawable/planitnowlogo"></ImageView>
+
+    <TextView
+        android:id="@+id/app_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="16sp"></TextView>
+
+</androidx.appcompat.widget.Toolbar>
