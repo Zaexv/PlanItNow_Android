@@ -17,6 +17,8 @@ type Query {
 type FriendRequestType {
   id: ID!
 
+  createdAt: DateTime!
+
   fromUser: UserProfileType!
 
   toUser: UserProfileType!
@@ -25,6 +27,13 @@ type FriendRequestType {
 
   requestStatus: FriendshipFriendRequestRequestStatusChoices!
 }
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
 
 type UserProfileType {
   id: ID!
@@ -114,6 +123,8 @@ type Mutation {
 
   acceptFriendRequest(frId: Int!): AcceptFriendRequest
 
+  rejectFriendRequest(frId: Int!): RejectFriendRequest
+
   createPlan(description: String!, endHour: Time!, initDate: Date!, initHour: Time!, isPublic: Boolean = null, location: String!, title: String!, urlPlanPicture: String = null): CreatePlan
 
   deletePlan(id: Int!): DeletePlan
@@ -135,6 +146,10 @@ type SendFriendRequest {
 }
 
 type AcceptFriendRequest {
+  friendRequest: FriendRequestType
+}
+
+type RejectFriendRequest {
   friendRequest: FriendRequestType
 }
 

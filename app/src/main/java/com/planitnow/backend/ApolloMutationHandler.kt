@@ -49,4 +49,16 @@ object ApolloMutationHandler {
         )
     }
 
+    suspend fun acceptFriendRequest(frId: Int): ApolloResponse<AcceptFriendRequestMutation.Data>{
+        return ApolloClientSingleton.instance.apolloClient.mutate(
+            AcceptFriendRequestMutation(frId = frId)
+        )
+    }
+
+    suspend fun rejectFriendRequest(frId: Int): ApolloResponse<RejectFriendRequestMutation.Data>{
+        return ApolloClientSingleton.instance.apolloClient.mutate(
+            RejectFriendRequestMutation(frId = frId)
+        )
+    }
+
 }

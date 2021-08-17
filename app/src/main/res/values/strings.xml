@@ -36,5 +36,18 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="success_friend_request">Se ha enviado correctamente tu solicitud</string>
     <string name="error_friend_request">El usuario no existe o ya has enviado una solicitud</string>
+    <string name="title_activity_notifications">NotificationsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="friend_request">Solicitud de Amistad</string>
+    <string name="sent_friend_request">te ha enviado una solicitud de amistad</string>
+    <string name="success_operation">Correcto</string>
+    <string name="error_operation">Ha habido un error. Prueba más tarde.</string>
 
 </resources>

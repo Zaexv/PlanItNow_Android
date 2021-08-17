@@ -1,0 +1,18 @@
+query ReceivedFriendRequests {
+    receivedFriendRequests{
+        id,
+        requestStatus,
+        createdAt,
+        isAccepted
+        fromUser {
+            id
+            publicUsername
+            urlProfilePicture
+
+            user{
+                id
+                username
+            }
+        }
+    }
+}

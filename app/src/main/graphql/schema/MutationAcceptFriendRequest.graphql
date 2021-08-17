@@ -1,0 +1,17 @@
+mutation acceptFriendRequest($frId: Int!) {
+    acceptFriendRequest(frId: $frId){
+        friendRequest{
+            isAccepted,
+            requestStatus,
+            fromUser {
+                id,
+                publicUsername
+                user{
+                    id,
+                    username
+                }
+            }
+        }
+    }
+}
+

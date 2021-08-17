@@ -16,6 +16,7 @@ import com.planitnow.R
 import com.planitnow.databinding.FragmentFriendsBinding
 import com.planitnow.usecases.addfriend.AddFriendFragment
 import com.planitnow.usecases.mainactivity.MainActivity
+import com.planitnow.usecases.notifications.NotificationsRouter
 
 class FriendsFragment : Fragment() {
 
@@ -72,7 +73,7 @@ class FriendsFragment : Fragment() {
         toolbar.setOnMenuItemClickListener{ item ->
             when (item.itemId){
                 R.id.action_add_friend -> showAddFriendDialog()
-                R.id.action_notifications -> Toast.makeText(toolbar.context,"Notificaçao",Toast.LENGTH_LONG).show()
+                R.id.action_notifications -> NotificationsRouter().launch(requireContext())
                 else -> Toast.makeText(toolbar.context,"purzao",Toast.LENGTH_LONG).show()
             }
             false
