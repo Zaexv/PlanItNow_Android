@@ -30,5 +30,11 @@
     <string name="created_by">Creado por</string>
     <string name="add_friend">Añadir Amigo</string>
     <string name="notifications">Notificaciones</string>
+    <string name="send">Enviar</string>
+    <string name="add_friend_hint">NombreUsuario</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="success_friend_request">Se ha enviado correctamente tu solicitud</string>
+    <string name="error_friend_request">El usuario no existe o ya has enviado una solicitud</string>
 
 </resources>

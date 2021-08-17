@@ -4,16 +4,18 @@
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/view_plan_basic_card"
+    android:id="@+id/view_friend_basic_card"
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:animateLayoutChanges="true"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="15dp"
     app:cardBackgroundColor="#FFFFFFFF"
-    app:cardCornerRadius="30dp"
+    app:cardCornerRadius="15dp"
     app:cardElevation="1dp"
-    app:cardUseCompatPadding="false"
+    app:cardUseCompatPadding="true"
     app:contentPadding="0dp">
 
     <LinearLayout

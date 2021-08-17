@@ -11,8 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.planitnow.R
 import com.planitnow.databinding.FragmentFriendsBinding
+import com.planitnow.usecases.addfriend.AddFriendFragment
+import com.planitnow.usecases.mainactivity.MainActivity
 
 class FriendsFragment : Fragment() {
 
@@ -68,7 +71,7 @@ class FriendsFragment : Fragment() {
         toolbar.inflateMenu(R.menu.friends_menu)
         toolbar.setOnMenuItemClickListener{ item ->
             when (item.itemId){
-                R.id.action_add_friend -> Toast.makeText(toolbar.context,"Añade amigo :)",Toast.LENGTH_LONG).show()
+                R.id.action_add_friend -> showAddFriendDialog()
                 R.id.action_notifications -> Toast.makeText(toolbar.context,"Notificaçao",Toast.LENGTH_LONG).show()
                 else -> Toast.makeText(toolbar.context,"purzao",Toast.LENGTH_LONG).show()
             }
@@ -76,5 +79,12 @@ class FriendsFragment : Fragment() {
         }
 
     }
+
+    private fun showAddFriendDialog(){
+        var addFriendFragment : AddFriendFragment = AddFriendFragment.instance
+        if (!addFriendFragment.isAdded) addFriendFragment.show(
+            requireActivity().supportFragmentManager,"add_friend")
+    }
+
 
 }

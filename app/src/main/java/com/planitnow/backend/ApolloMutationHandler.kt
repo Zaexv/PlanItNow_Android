@@ -4,10 +4,7 @@ import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.ApolloResponse
 import com.apollographql.apollo3.api.Optional
 import com.apollographql.apollo3.network.http.HttpNetworkTransport
-import com.graphql.models.AllPlansQuery
-import com.graphql.models.CreatePlanMutation
-import com.graphql.models.DeletePlanMutation
-import com.graphql.models.TokenAuthMutation
+import com.graphql.models.*
 import com.planitnow.model.session.Session
 
 object ApolloMutationHandler {
@@ -43,4 +40,13 @@ object ApolloMutationHandler {
             )
         )
     }
+
+    suspend fun sendFriendRequest(toUsername: String): ApolloResponse<SendFriendRequestMutation.Data>{
+        return ApolloClientSingleton.instance.apolloClient.mutate(
+            SendFriendRequestMutation(
+                toUsername = toUsername
+            )
+        )
+    }
+
 }

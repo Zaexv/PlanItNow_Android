@@ -1,0 +1,20 @@
+mutation sendFriendRequest($toUsername: String!) {
+    sendFriendRequest(toUsername: $toUsername){
+        friendRequest{
+            isAccepted,
+            requestStatus,
+            fromUser{
+                user{
+                    username
+                }
+            },
+            toUser{
+                user{
+                    username
+                }
+            }
+        }
+    }
+}
+
+

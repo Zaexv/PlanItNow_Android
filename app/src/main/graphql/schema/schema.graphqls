@@ -1,4 +1,8 @@
 type Query {
+  receivedFriendRequests: [FriendRequestType]
+
+  sentFriendRequests: [FriendRequestType]
+
   myFriends: [UserProfileType]
 
   users: [UserType]
@@ -8,6 +12,18 @@ type Query {
   allPlans: [PlanType]
 
   detailedPlan(id: Int!): PlanType
+}
+
+type FriendRequestType {
+  id: ID!
+
+  fromUser: UserProfileType!
+
+  toUser: UserProfileType!
+
+  isAccepted: Boolean!
+
+  requestStatus: FriendshipFriendRequestRequestStatusChoices!
 }
 
 type UserProfileType {
@@ -44,6 +60,26 @@ value as specified by
 """
 scalar Date
 
+"""
+An enumeration.
+"""
+enum FriendshipFriendRequestRequestStatusChoices {
+  """
+  PENDING
+  """
+  PENDING
+
+  """
+  ACCEPTED
+  """
+  ACCEPTED
+
+  """
+  REJECTED
+  """
+  REJECTED
+}
+
 type PlanType {
   id: ID!
 
@@ -74,6 +110,10 @@ specified by
 scalar Time
 
 type Mutation {
+  sendFriendRequest(toUsername: String!): SendFriendRequest
+
+  acceptFriendRequest(frId: Int!): AcceptFriendRequest
+
   createPlan(description: String!, endHour: Time!, initDate: Date!, initHour: Time!, isPublic: Boolean = null, location: String!, title: String!, urlPlanPicture: String = null): CreatePlan
 
   deletePlan(id: Int!): DeletePlan
@@ -88,6 +128,14 @@ type Mutation {
   verifyToken(token: String = null): Verify
 
   refreshToken(token: String = null): Refresh
+}
+
+type SendFriendRequest {
+  friendRequest: FriendRequestType
+}
+
+type AcceptFriendRequest {
+  friendRequest: FriendRequestType
 }
 
 type CreatePlan {
