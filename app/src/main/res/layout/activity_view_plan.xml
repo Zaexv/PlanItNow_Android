@@ -59,53 +59,63 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/view_plan_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="Casa de Edu"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-                <TextView
                     android:id="@+id/view_plan_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_event_black_24dp"
+                    android:drawablePadding="10dp"
                     android:text="Viernes 30 de Junio"
-                    android:textAlignment="center"
+                    android:textAlignment="viewStart"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/view_plan_initHour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
+                        android:drawableLeft="@drawable/ic_clock_black_24dp"
+                        android:drawablePadding="10dp"
                         android:text="De 4 a 8"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textSize="16sp"
+                        app:drawableLeftCompat="@drawable/ic_clock_black_24dp" />
 
                     <TextView
                         android:id="@+id/view_plan_endHour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
                         android:text="De 4 a 8"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
+
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/view_plan_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_place_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Casa de Edu"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <androidx.cardview.widget.CardView
 
@@ -115,38 +125,38 @@
             android:animateLayoutChanges="true"
             android:clipToPadding="true"
             android:paddingEnd="10dp"
-            app:cardBackgroundColor="@color/cardview_dark_background"
-            app:cardCornerRadius="30dp"
+            app:cardBackgroundColor="@color/yellow_secondary_dark"
+            app:cardCornerRadius="15dp"
             app:cardElevation="1dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             app:contentPadding="10dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="350dp"
-                android:layout_height="110dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/view_plan_owner_profile_picture"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="4dp"
                     android:paddingStart="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.1"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="50dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/view_plan_owner_profile_picture"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
 
                     <TextView
                         android:id="@+id/view_plan_created_by_text"
@@ -155,15 +165,26 @@
                         android:fontFamily="sans-serif-light"
                         android:text="@string/created_by"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@color/material_on_primary_emphasis_high_type" />
+                        android:textColor="@color/material_on_primary_disabled"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/view_plan_owner_public_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/view_plan_owner_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                        android:textColor="@color/white" />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:textColor="@android:color/background_light"
+                        android:textSize="12sp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

@@ -10,7 +10,11 @@ query detailedPlan($id: Int!){
        urlPlanPicture
        owner {
            id,
-           username
+           username,
+           userProfile{
+               publicUsername,
+               urlProfilePicture
+           }
        }
    }
 

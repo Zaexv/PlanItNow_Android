@@ -22,6 +22,10 @@ import com.planitnow.model.session.Session
 import com.planitnow.usecases.login.LoginViewModel
 import com.planitnow.usecases.mainactivity.MainActivityRouter
 import kotlinx.coroutines.runBlocking
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class ViewPlanActivity : AppCompatActivity() {
 
@@ -76,14 +80,20 @@ class ViewPlanActivity : AppCompatActivity() {
         binding.viewPlanTitle.text = detailedPlan.title
         binding.viewPlanDescription.text = detailedPlan.description
         binding.viewPlanLocation.text = detailedPlan.location
-        binding.viewPlanDate.text = detailedPlan.initDate.toString()
-        binding.viewPlanInitHour.text = detailedPlan.initHour.toString().subSequence(0, 5)
-        binding.viewPlanEndHour.text = detailedPlan.endHour.toString().subSequence(0, 5)
+        var parsedDate = LocalDate.parse(detailedPlan.initDate.toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        val fechaEspanol = DateTimeFormatter.ofPattern("EEEE, dd/MMMM/yyyy", Locale("es","ES"))
+        binding.viewPlanDate.text = fechaEspanol.format(parsedDate)
+        val initHour = detailedPlan.initHour.toString().subSequence(0, 5)
+        val endHour = detailedPlan.endHour.toString().subSequence(0, 5)
+        binding.viewPlanInitHour.text = "De $initHour"
+        binding.viewPlanEndHour.text = " a $endHour"
         binding.viewPlanImage.load(detailedPlan.urlPlanPicture) {
             placeholder(R.drawable.ic_launcher_foreground)
         }
-        binding.viewPlanOwnerName.text = detailedPlan.owner.username
-        binding.viewPlanOwnerProfilePicture.load("https://streammentor.com/wp-content/uploads/2020/12/output-onlinepngtools9.png") {
+
+        binding.viewPlanOwnerPublicName.text = detailedPlan.owner.userProfile!!.publicUsername
+        binding.viewPlanOwnerName.text = "@"+detailedPlan.owner.username
+        binding.viewPlanOwnerProfilePicture.load(detailedPlan.owner.userProfile!!.urlProfilePicture) {
             placeholder(R.drawable.ic_home_black_24dp)
             transformations(CircleCropTransformation())
         }

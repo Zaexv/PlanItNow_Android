@@ -15,6 +15,9 @@ import coil.transform.RoundedCornersTransformation
 import com.planitnow.R
 import com.planitnow.usecases.viewplan.ViewPlanActivity
 import com.planitnow.usecases.viewplan.ViewPlanRouter
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class HomeAdapter(var homeViewModel: HomeViewModel) :
@@ -41,7 +44,9 @@ class HomeAdapter(var homeViewModel: HomeViewModel) :
         val initHour = plan.initHour.toString().subSequence(0, 5)
         val endHour = plan.endHour.toString().subSequence(0, 5)
         holder.binding.planHourTextView.text = "De $initHour a $endHour"
-        holder.binding.planDateTextView.text = plan.initDate.toString()
+        var parsedDate = LocalDate.parse(plan.initDate.toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        val fechaEspanol = DateTimeFormatter.ofPattern("EEEE, dd/MM/yyyy", Locale("es","ES"))
+        holder.binding.planDateTextView.text = fechaEspanol.format(parsedDate)
         holder.binding.planLocationTextView.text = plan.location
         holder.binding.planImageView.load(plan.urlPlanPicture) {
             placeholder(R.drawable.ic_launcher_foreground)

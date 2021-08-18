@@ -42,4 +42,12 @@ class NotificationsActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+    override fun onResume() {
+        lifecycleScope.launchWhenResumed {
+            notificationsViewModel.refreshReceivedFriendRequests()
+            notificationsAdapter.notifyDataSetChanged()
+        }
+        super.onResume()
+    }
+
 }
