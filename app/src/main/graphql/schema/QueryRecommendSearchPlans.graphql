@@ -1,0 +1,13 @@
+query recommendOrSearch($searchString: String = null){
+    recommendedOrSearch(searchString: $searchString){
+        id,
+        title,
+        description,
+        initDate,
+        initHour,
+        endHour,
+        location,
+        urlPlanPicture
+    }
+}
+

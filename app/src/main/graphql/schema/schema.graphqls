@@ -12,6 +12,8 @@ type Query {
   allPlans: [PlanType]
 
   detailedPlan(id: Int!): PlanType
+
+  recommendedOrSearch(searchString: String = null): [PlanType]
 }
 
 type FriendRequestType {

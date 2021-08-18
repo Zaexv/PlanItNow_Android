@@ -12,10 +12,10 @@ class HomeViewModel : ViewModel() {
 
     var allPlans = listOf<AllPlansQuery.AllPlan>()
 
-    suspend fun refreshPlans(){
+    suspend fun refreshPlans() {
         val res = try {
             ApolloQueryHandler.getAllPlans()
-        } catch ( e: ApolloException){
+        } catch (e: ApolloException) {
             return
         }
         val plans = res.data?.allPlans?.filterNotNull()
@@ -23,5 +23,5 @@ class HomeViewModel : ViewModel() {
             allPlans = plans
         }
     }
-    }
+}
 
