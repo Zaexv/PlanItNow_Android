@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.graphql.models.AllPlansQuery
 import com.planitnow.databinding.CardPlanBinding
 import coil.api.load
+import coil.size.Scale
 import coil.transform.BlurTransformation
 import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
@@ -49,8 +50,9 @@ class HomeAdapter(var homeViewModel: HomeViewModel) :
         holder.binding.planDateTextView.text = fechaEspanol.format(parsedDate)
         holder.binding.planLocationTextView.text = plan.location
         holder.binding.planImageView.load(plan.urlPlanPicture) {
+            scale(Scale.FILL)
             placeholder(R.drawable.ic_launcher_foreground)
-            transformations(RoundedCornersTransformation(10f))
+            transformations(RoundedCornersTransformation(5f))
         }
         if (position == homeViewModel.allPlans.size - 1) {
             onEndOfListReached?.invoke()

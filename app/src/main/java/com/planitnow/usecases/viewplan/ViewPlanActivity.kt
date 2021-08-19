@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import coil.api.load
+import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.graphql.models.DetailedPlanQuery
@@ -94,6 +95,7 @@ class ViewPlanActivity : AppCompatActivity() {
         binding.viewPlanOwnerPublicName.text = detailedPlan.owner.userProfile!!.publicUsername
         binding.viewPlanOwnerName.text = "@"+detailedPlan.owner.username
         binding.viewPlanOwnerProfilePicture.load(detailedPlan.owner.userProfile!!.urlProfilePicture) {
+            scale(Scale.FILL)
             placeholder(R.drawable.ic_home_black_24dp)
             transformations(CircleCropTransformation())
         }
