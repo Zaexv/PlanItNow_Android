@@ -1,6 +1,9 @@
 package com.planitnow.usecases.mainactivity
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.Toast
+import android.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -31,6 +34,12 @@ class MainActivity : AppCompatActivity() {
             )
         )
         //setupActionBarWithNavController(navController, appBarConfiguration)
+
+        val imageView = findViewById<ImageView>(R.id.app_logo)
+        imageView.setOnClickListener(){
+            Toast.makeText(this,"clickado",Toast.LENGTH_SHORT).show()
+        }
+
         navView.setupWithNavController(navController)
     }
 
