@@ -25,7 +25,7 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="25dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_post_add_black_24dp"
+        android:src="@android:drawable/ic_menu_edit"
         app:backgroundTint="?android:attr/colorPressedHighlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/listPlanRecyclerView"

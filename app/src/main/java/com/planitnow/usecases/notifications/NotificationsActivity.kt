@@ -35,7 +35,7 @@ class NotificationsActivity : AppCompatActivity() {
         binding.listNotificationsRecyclerView.adapter = notificationsAdapter
 
 
-        runBlocking {
+        lifecycleScope.launchWhenResumed {
             notificationsViewModel.refreshReceivedFriendRequests()
             notificationsAdapter.notifyDataSetChanged()
         }
