@@ -52,11 +52,12 @@ class ViewPlanActivity : AppCompatActivity() {
         if (viewPlanViewModel.detailedPlan.owner.id == Session.instance.me.id) {
             binding.viewPlanOwnerCard.visibility = View.GONE
             binding.viewPlanButtonDelete.visibility = View.VISIBLE
+            binding.viewPlanParticipateButton.visibility = View.GONE
             binding.viewPlanButtonDelete.setOnClickListener() {
 
                 //TODO añadir cuadro de Diálogo ¿Seguro que quieres borrar el plan?
 
-                runBlocking {
+                lifecycleScope.launchWhenResumed {
                     val ok = viewPlanViewModel.deleteViewingPlan()
                     if (ok) {
                         Toast.makeText(
@@ -74,15 +75,30 @@ class ViewPlanActivity : AppCompatActivity() {
                     }
                 }
             }
+        } else {
+            binding.viewPlanParticipateButton.setOnClickListener() {
+                lifecycleScope.launchWhenResumed {
+                    viewPlanViewModel.participateInPlan(this@ViewPlanActivity)
+                    bindPlan(viewPlanViewModel.detailedPlan)
+                }
+            }
         }
     }
 
     private fun bindPlan(detailedPlan: DetailedPlanQuery.DetailedPlan) {
+        if(viewPlanViewModel.userIsParticipating) {
+            binding.viewPlanParticipateButton.text = "Desapuntarse"
+        } else {
+            binding.viewPlanParticipateButton.text = "Apuntarse"
+        }
         binding.viewPlanTitle.text = detailedPlan.title
         binding.viewPlanDescription.text = detailedPlan.description
         binding.viewPlanLocation.text = detailedPlan.location
-        var parsedDate = LocalDate.parse(detailedPlan.initDate.toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-        val fechaEspanol = DateTimeFormatter.ofPattern("EEEE, dd/MMMM/yyyy", Locale("es","ES"))
+        var parsedDate = LocalDate.parse(
+            detailedPlan.initDate.toString(),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        )
+        val fechaEspanol = DateTimeFormatter.ofPattern("EEEE, dd/MMMM/yyyy", Locale("es", "ES"))
         binding.viewPlanDate.text = fechaEspanol.format(parsedDate)
         val initHour = detailedPlan.initHour.toString().subSequence(0, 5)
         val endHour = detailedPlan.endHour.toString().subSequence(0, 5)
@@ -93,12 +109,20 @@ class ViewPlanActivity : AppCompatActivity() {
         }
 
         binding.viewPlanOwnerPublicName.text = detailedPlan.owner.userProfile!!.publicUsername
-        binding.viewPlanOwnerName.text = "@"+detailedPlan.owner.username
+        binding.viewPlanOwnerName.text = "@" + detailedPlan.owner.username
         binding.viewPlanOwnerProfilePicture.load(detailedPlan.owner.userProfile!!.urlProfilePicture) {
             scale(Scale.FILL)
             placeholder(R.drawable.ic_home_black_24dp)
             transformations(CircleCropTransformation())
         }
+
+        //TODO poner algo más elegante
+        val list =
+            detailedPlan.participatingPlan.map { participatingPlan -> participatingPlan.participantUser.user.username }
+        binding.viewPlanNumberParticipantsText.text =
+            list.size.toString() + "/" + detailedPlan.maxParticipants + " Participantes"
+        binding.viewPlanParticipantsText.text = list.toString()
+
     }
 
 

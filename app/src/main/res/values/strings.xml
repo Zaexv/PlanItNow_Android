@@ -49,5 +49,6 @@
     <string name="sent_friend_request">te ha enviado una solicitud de amistad</string>
     <string name="success_operation">Correcto</string>
     <string name="error_operation">Ha habido un error. Prueba más tarde.</string>
+    <string name="participate">Apuntarse</string>
 
 </resources>

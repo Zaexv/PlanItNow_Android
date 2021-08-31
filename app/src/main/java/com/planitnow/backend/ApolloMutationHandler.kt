@@ -61,4 +61,10 @@ object ApolloMutationHandler {
         )
     }
 
+    suspend fun participateInPlan(planId: Int): ApolloResponse<ParticipateInPlanMutation.Data>{
+        return ApolloClientSingleton.instance.apolloClient.mutate(
+            ParticipateInPlanMutation(planId = planId)
+        )
+    }
+
 }

@@ -1,0 +1,15 @@
+mutation participateInPlan($planId: Int!){
+    participateInPlan(planId: $planId){
+        planParticipation{
+            id,
+            participantUser{
+                id,
+                publicUsername
+            },
+            participatingPlan{
+                title,
+                description
+            }
+        }
+    }
+}

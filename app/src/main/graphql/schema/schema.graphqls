@@ -110,7 +110,11 @@ type PlanType {
 
   isPublic: Boolean
 
+  maxParticipants: Int
+
   urlPlanPicture: String
+
+  participatingPlan: [PlanParticipationType!]!
 }
 
 """
@@ -120,6 +124,14 @@ specified by
 """
 scalar Time
 
+type PlanParticipationType {
+  id: ID!
+
+  participantUser: UserProfileType!
+
+  participatingPlan: PlanType!
+}
+
 type Mutation {
   sendFriendRequest(toUsername: String!): SendFriendRequest
 
@@ -127,9 +139,14 @@ type Mutation {
 
   rejectFriendRequest(frId: Int!): RejectFriendRequest
 
-  createPlan(description: String!, endHour: Time!, initDate: Date!, initHour: Time!, isPublic: Boolean = null, location: String!, title: String!, urlPlanPicture: String = null): CreatePlan
+  createPlan(description: String!, endHour: Time!, initDate: Date!, initHour: Time!, isPublic: Boolean = null, location: String!, maxParticipants: Int = null, title: String!, urlPlanPicture: String = null): CreatePlan
 
   deletePlan(id: Int!): DeletePlan
+
+  """
+  In the case that it already exists a participation, it will be destroyed
+  """
+  participateInPlan(planId: Int!): ParticipateInPlan
 
   createUser(email: String!, password: String!, username: String!): CreateUser
 
@@ -161,6 +178,13 @@ type CreatePlan {
 
 type DeletePlan {
   ok: Boolean
+}
+
+"""
+In the case that it already exists a participation, it will be destroyed
+"""
+type ParticipateInPlan {
+  planParticipation: PlanParticipationType
 }
 
 type CreateUser {

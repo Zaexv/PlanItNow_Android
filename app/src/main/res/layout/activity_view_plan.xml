@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,6 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <include
+            android:id="@+id/main_toolbar"
+            layout="@layout/main_toolbar"></include>
 
         <ImageView
             android:id="@+id/view_plan_image"
@@ -26,9 +31,14 @@
             android:background="?android:attr/listDivider"
             android:scaleY="1" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
+        <Button
+            android:id="@+id/view_plan_participate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/participate"
+            android:translationX="-25dp"
+            android:translationY="-25dp" />
 
         <TextView
             android:id="@+id/view_plan_title"
@@ -56,7 +66,7 @@
             android:animateLayoutChanges="true"
             android:clipToPadding="true"
             android:paddingEnd="10dp"
-            app:cardBackgroundColor="#FFFFFFFF"
+            app:cardBackgroundColor="@color/yellow_primary_light"
             app:cardCornerRadius="15dp"
             app:cardElevation="5dp"
             app:cardPreventCornerOverlap="true"
@@ -131,7 +141,7 @@
         <View
             android:id="@+id/divider2"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="wrap_content"
             android:background="?android:attr/listDivider"
             android:scaleY="1"
             tools:layout_editor_absoluteX="-198dp"
@@ -149,7 +159,7 @@
             android:animateLayoutChanges="true"
             android:clipToPadding="true"
             android:paddingEnd="10dp"
-            app:cardBackgroundColor="@color/yellow_primary_light"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="15dp"
             app:cardElevation="1dp"
             app:cardPreventCornerOverlap="true"
@@ -173,11 +183,13 @@
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_marginEnd="35dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/view_plan_owner_profile_picture"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0">
@@ -196,6 +208,11 @@
                         android:id="@+id/view_plan_owner_public_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:ellipsize="end"
+                        android:inputType="textImeMultiLine"
+                        android:maxLines="2"
+                        android:singleLine="false"
                         android:text="TextView"
                         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                         android:textColor="@color/black"
@@ -208,6 +225,58 @@
                         android:text="TextView"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/view_plan_participants_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:clipToPadding="true"
+            android:paddingEnd="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="1dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+
+                    <TextView
+                        android:id="@+id/view_plan_number_participants_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3/5 Participantes"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/view_plan_participants_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@Pepito, @Zaexv, @Pepe"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:textColor="#959494"
                         android:textSize="12sp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
