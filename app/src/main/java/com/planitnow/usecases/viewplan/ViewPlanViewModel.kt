@@ -50,8 +50,10 @@ class ViewPlanViewModel : ViewModel() {
         }
 
         if (participation.data!!.participateInPlan!!.planParticipation == null) {
+            userIsParticipating = false
             Toast.makeText(c, "Te has borrado del plan", Toast.LENGTH_SHORT).show()
         } else {
+            userIsParticipating = true
             Toast.makeText(c, "Te has apuntado al plan", Toast.LENGTH_SHORT).show()
         }
 
