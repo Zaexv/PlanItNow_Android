@@ -15,6 +15,11 @@
         android:theme="@style/Theme.PlanItNow"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name=".register.RegisterActivity"
+            android:exported="true"
+            android:label="@string/register_activity_title"
+            android:theme="@style/Theme.PlanItNow.NoActionBar" />
+        <activity
             android:name=".usecases.notifications.NotificationsActivity"
             android:exported="true"
             android:label="@string/title_activity_notifications"

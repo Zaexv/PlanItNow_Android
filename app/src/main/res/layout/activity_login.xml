@@ -72,8 +72,24 @@
             android:layout_weight="1"
             android:backgroundTint="#F30101"
             android:text="@string/login"
-            app:icon="@drawable/ic_login_black_24dp" />
+            android:textColor="#FFFCFC"
+            app:icon="@drawable/ic_login_black_24dp"
+            app:iconTint="#FFFFFF" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/registration_text"
+        style="@style/Widget.AppCompat.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registration_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#3F51B5"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

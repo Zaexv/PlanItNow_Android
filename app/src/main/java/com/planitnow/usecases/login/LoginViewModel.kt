@@ -14,7 +14,6 @@ class LoginViewModel : ViewModel() {
             maxAttempts--
         } else{
 
-
         }
 
         }

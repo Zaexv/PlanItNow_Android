@@ -50,5 +50,22 @@
     <string name="success_operation">Correcto</string>
     <string name="error_operation">Ha habido un error. Prueba más tarde.</string>
     <string name="participate">Apuntarse</string>
+    <string name="register_activity_title">Registrarse</string>
+    <string name="register_help">Para registrarte rellena todos los datos a continuación y pulsa el botón de registrarse</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellidos</string>
+    <string name="email">Email</string>
+    <string name="birth_date">Fecha de Nacimiento</string>
+    <string name="username">Nombre de Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar Contraseña</string>
+    <string name="name_input">Introduce tu Nombre</string>
+    <string name="last_name_input">Introduce tus apellidos</string>
+    <string name="email_input">Introduce tu Email</string>
+    <string name="username_input">Introduce tu Nombre de Usuario</string>
+    <string name="register">Registrarse</string>
+    <string name="cancel">Cancelar</string>
+    <string name="cancelar">cancelar</string>
+    <string name="registration_text">¿No tienes cuenta? Regístrate</string>
 
 </resources>

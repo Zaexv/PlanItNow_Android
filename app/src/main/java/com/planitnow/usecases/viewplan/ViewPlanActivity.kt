@@ -110,7 +110,7 @@ class ViewPlanActivity : AppCompatActivity() {
 
         binding.viewPlanOwnerPublicName.text = detailedPlan.owner.userProfile!!.publicUsername
         binding.viewPlanOwnerName.text = "@" + detailedPlan.owner.username
-        binding.viewPlanOwnerProfilePicture.load(detailedPlan.owner.userProfile!!.urlProfilePicture) {
+        binding.viewPlanOwnerProfilePicture.load(detailedPlan.owner.userProfile.urlProfilePicture) {
             scale(Scale.FILL)
             placeholder(R.drawable.ic_home_black_24dp)
             transformations(CircleCropTransformation())

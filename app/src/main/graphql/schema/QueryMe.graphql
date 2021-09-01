@@ -1,6 +1,13 @@
 query Me{
     me {
         id,
-        username
+        username,
+        userProfile{
+            publicUsername,
+            biography,
+            residence,
+            birthDate,
+            urlProfilePicture,
+        }
     }
 }

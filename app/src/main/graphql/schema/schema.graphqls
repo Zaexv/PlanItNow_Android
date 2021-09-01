@@ -148,7 +148,10 @@ type Mutation {
   """
   participateInPlan(planId: Int!): ParticipateInPlan
 
-  createUser(email: String!, password: String!, username: String!): CreateUser
+  """
+  Register a user in the backend platform. This will create a very basic userprofile with some data too
+  """
+  createUser(birthDate: Date!, email: String!, firstName: String!, lastName: String!, password: String!, username: String!): CreateUser
 
   """
   Obtain JSON Web Token mutation
@@ -187,6 +190,9 @@ type ParticipateInPlan {
   planParticipation: PlanParticipationType
 }
 
+"""
+Register a user in the backend platform. This will create a very basic userprofile with some data too
+"""
 type CreateUser {
   user: UserType
 }
