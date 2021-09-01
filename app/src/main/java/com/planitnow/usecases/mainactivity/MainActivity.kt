@@ -1,5 +1,6 @@
 package com.planitnow.usecases.mainactivity
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
@@ -10,8 +11,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import coil.api.load
+import coil.transform.CircleCropTransformation
 import com.planitnow.R
 import com.planitnow.databinding.ActivityMainBinding
+import com.planitnow.model.session.Session
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,12 +40,23 @@ class MainActivity : AppCompatActivity() {
         //setupActionBarWithNavController(navController, appBarConfiguration)
 
         val imageView = findViewById<ImageView>(R.id.app_logo)
+
+        imageView.load(Session.instance.me.userProfile!!.urlProfilePicture){
+            transformations(CircleCropTransformation())
+        }
+
         imageView.setOnClickListener(){
             Toast.makeText(this,"clickado",Toast.LENGTH_SHORT).show()
+            removeTokenFromSharedPreferences()
         }
 
         navView.setupWithNavController(navController)
     }
 
+    //TODO refactor al edit profile
+    private fun removeTokenFromSharedPreferences(){
+        val preferences = this.getSharedPreferences("planitnow", Context.MODE_PRIVATE)
+        preferences.edit().putString("TOKEN", "null").apply();
+    }
 
 }

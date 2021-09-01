@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow_primary">
+    android:background="#FFEB3B">
 
 
     <LinearLayout
@@ -42,7 +42,8 @@
             android:ems="10"
             android:hint="Username"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:visibility="gone" />
 
         <Space
             android:layout_width="match_parent"
@@ -59,7 +60,8 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:visibility="gone" />
 
         <Space
             android:layout_width="match_parent"
@@ -73,6 +75,7 @@
             android:backgroundTint="#F30101"
             android:text="@string/login"
             android:textColor="#FFFCFC"
+            android:visibility="gone"
             app:icon="@drawable/ic_login_black_24dp"
             app:iconTint="#FFFFFF" />
 
@@ -87,6 +90,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#3F51B5"
         android:textSize="16sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

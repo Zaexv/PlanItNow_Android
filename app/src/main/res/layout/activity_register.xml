@@ -236,6 +236,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_weight="0.8"
                         android:background="@drawable/textedit_rounded_borders"
+                        android:drawableLeft="@drawable/ic_account_circle_black_24dp"
                         android:ems="10"
                         android:hint="@string/username"
                         android:inputType="textPersonName"

@@ -4,6 +4,7 @@ import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.ApolloResponse
 import com.graphql.models.CreateUserMutation
 import com.graphql.models.TokenAuthMutation
+import com.graphql.models.VerifyTokenMutation
 
 object ApolloLoginHandler {
 
@@ -15,6 +16,12 @@ object ApolloLoginHandler {
         password: String
     ): ApolloResponse<TokenAuthMutation.Data> {
         return ApolloLoginHandler.apolloClient.mutate(TokenAuthMutation(username, password))
+    }
+
+    suspend fun verifyToken(
+        token:String
+    ): ApolloResponse<VerifyTokenMutation.Data> {
+        return ApolloLoginHandler.apolloClient.mutate(VerifyTokenMutation(token))
     }
 
     suspend fun register(

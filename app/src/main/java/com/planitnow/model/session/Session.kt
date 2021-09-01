@@ -1,5 +1,6 @@
 package com.planitnow.model.session
 
+import android.content.Context
 import com.apollographql.apollo3.exception.ApolloException
 import com.graphql.models.MeQuery
 import com.planitnow.backend.ApolloClientSingleton
@@ -25,6 +26,7 @@ class Session {
                 return false
             }
             instance.token = tokenRes.data?.tokenAuth!!.token
+
             ApolloClientSingleton.instance
             me = ApolloQueryHandler.getLoggedUser().data?.me!!
         } catch (e: ApolloException) {
@@ -34,9 +36,27 @@ class Session {
         return true
     }
 
+    suspend fun verifyToken(token: String): Boolean {
+        var verified = false
+        val res = try {
+            ApolloLoginHandler.verifyToken(token)
+        } catch (e: ApolloException) {
+            println(e.message)
+            return verified
+        }
+
+        if (!res.hasErrors()) {
+            verified = true
+            instance.token = token
+        }
+        return verified
+    }
+
+
     fun getToken(): String {
         println("Mi Token es:" + instance.token)
         return instance.token
     }
+
 
 }

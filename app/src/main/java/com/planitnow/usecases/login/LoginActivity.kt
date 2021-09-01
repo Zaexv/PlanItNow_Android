@@ -1,6 +1,8 @@
 package com.planitnow.usecases.login
 
+import android.content.Context
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -22,6 +24,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
+
+        initializeAppFromToken()
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
@@ -51,11 +55,13 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_SHORT).show()
             }
             loginViewModel.decreaseAttempts()
-        }
-        if (logged) {
-            MainActivityRouter().launch(this)
-        } else {
-            Toast.makeText(this, getText(R.string.login_error), Toast.LENGTH_LONG).show()
+            if (logged) {
+                addTokenToSharedPreferences()
+                MainActivityRouter().launch(this@LoginActivity)
+            } else {
+                Toast.makeText(this@LoginActivity, getText(R.string.login_error), Toast.LENGTH_LONG)
+                    .show()
+            }
         }
     }
 
@@ -64,6 +70,33 @@ class LoginActivity : AppCompatActivity() {
         builder.setTitle(R.string.loginmaxAttempts)
         builder.setMessage(R.string.loginMaxAttemptsMessage)
         builder.setPositiveButton(R.string.accept, null).show()
+    }
+
+
+    //TODO cambiar el nombre de las shared preferences
+    private fun addTokenToSharedPreferences(){
+        val preferences = this.getSharedPreferences("planitnow", Context.MODE_PRIVATE)
+        preferences.edit().putString("TOKEN",Session.instance.getToken()).apply();
+    }
+
+    private fun loadTokenFromSharedPreferences(): String {
+        val preferences = this.getSharedPreferences("planitnow", Context.MODE_PRIVATE)
+        Toast.makeText(this,preferences.getString("TOKEN",null), Toast.LENGTH_SHORT).show()
+        return preferences.getString("TOKEN","null")!!;
+    }
+
+    private fun initializeAppFromToken(){
+        val token = loadTokenFromSharedPreferences()
+        lifecycleScope.launchWhenResumed {
+            val verified = Session.instance.verifyToken(token)
+            if (verified) {MainActivityRouter().launch(this@LoginActivity)}
+            else {
+                binding.loginEmail.visibility = View.VISIBLE
+                binding.loginPassword.visibility = View.VISIBLE
+                binding.loginButton.visibility = View.VISIBLE
+                binding.registrationText.visibility = View.VISIBLE
+            }
+        }
     }
 
 }
