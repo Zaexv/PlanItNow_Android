@@ -16,6 +16,7 @@ import coil.transform.CircleCropTransformation
 import com.planitnow.R
 import com.planitnow.databinding.ActivityMainBinding
 import com.planitnow.model.session.Session
+import com.planitnow.usecases.profile.ProfileRouter
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,17 +47,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         imageView.setOnClickListener(){
-            Toast.makeText(this,"Has cerrado sesión",Toast.LENGTH_SHORT).show()
-            removeTokenFromSharedPreferences()
+            ProfileRouter().launch(this)
         }
 
         navView.setupWithNavController(navController)
-    }
-
-    //TODO refactor al edit profile
-    private fun removeTokenFromSharedPreferences(){
-        val preferences = this.getSharedPreferences("planitnow", Context.MODE_PRIVATE)
-        preferences.edit().putString("TOKEN", "null").apply();
     }
 
 }

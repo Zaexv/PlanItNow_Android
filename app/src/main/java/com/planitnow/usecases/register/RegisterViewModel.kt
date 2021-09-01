@@ -1,7 +1,6 @@
-package com.planitnow.register
+package com.planitnow.usecases.register
 
 import android.content.Context
-import android.text.InputFilter
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.apollographql.apollo3.exception.ApolloException

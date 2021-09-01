@@ -67,5 +67,17 @@
     <string name="cancel">Cancelar</string>
     <string name="cancelar">cancelar</string>
     <string name="registration_text">¿No tienes cuenta? Regístrate</string>
+    <string name="edit_profile_help">Todo lo que modifiques en este formulario será modificado en tu perfil. Una vez finalices la edición haz click en el botón Modificar Perfil</string>
+    <string name="nick">Nombre Publico</string>
+    <string name="biography">Biografía</string>
+    <string name="write_biography">¡Escríbenos algo sobre ti!</string>
+    <string name="edit_profile">Modificar Perfil</string>
+    <string name="residence">Residencia</string>
+    <string name="residence_help">¿Dónde sueles estar?</string>
+    <string name="public_username_help">Pon un nombre a tu estilo</string>
+    <string name="profile_picture_image_link">Enlace a tu foto de perfil</string>
+    <string name="image_url_help">Tiene que ser un enlace directo a una imágen</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="logout_action">Se ha cerrado sesión. Surtirá efecto cuando reinicies la app.</string>
 
 </resources>

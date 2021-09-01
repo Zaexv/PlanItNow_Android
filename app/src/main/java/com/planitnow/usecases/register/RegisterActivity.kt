@@ -1,24 +1,13 @@
-package com.planitnow.register
+package com.planitnow.usecases.register
 
-import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.apollographql.apollo3.exception.ApolloException
-import com.planitnow.R
-import com.planitnow.backend.ApolloMutationHandler
-import com.planitnow.databinding.ActivityCreatePlanBinding
 import com.planitnow.databinding.ActivityRegisterBinding
-import com.planitnow.usecases.login.LoginViewModel
-import com.planitnow.usecases.mainactivity.MainActivityRouter
-import kotlinx.coroutines.runBlocking
-import java.text.SimpleDateFormat
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {

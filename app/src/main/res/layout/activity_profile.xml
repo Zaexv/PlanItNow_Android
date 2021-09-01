@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFEB3B"
+    android:backgroundTint="#FFEB3B">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/activity_app_logo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/planitnowlogo" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="90dp"
+            android:elevation="5dp"
+            app:cardBackgroundColor="@color/yellow_primary"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_app_logo">
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="90dp"
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profile_helper_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp"
+                    android:text="@string/edit_profile_help"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_weight="1"
+                    android:background="@color/black"
+                    android:scaleY="1" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:collapseColumns="2">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/profile_text_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.3"
+                            android:maxWidth="50dp"
+                            android:text="@string/nick"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/profile_input_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="0.8"
+                            android:background="@drawable/textedit_rounded_borders"
+                            android:drawableLeft="@drawable/ic_account_circle_black_24dp"
+                            android:ems="10"
+                            android:hint="@string/public_username_help"
+                            android:inputType="textMultiLine|textPersonName"
+                            android:minHeight="48dp"
+                            android:paddingHorizontal="5dp"
+                            android:paddingVertical="5dp"
+                            android:paddingLeft="10dp"
+                            android:textSize="14sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/profile_text_biography"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.3"
+                            android:maxWidth="50dp"
+                            android:text="@string/biography"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/profile_input_biography"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="0.8"
+                            android:background="@drawable/textedit_rounded_borders"
+                            android:ems="10"
+                            android:hint="@string/write_biography"
+                            android:inputType="textLongMessage|textMultiLine"
+                            android:minHeight="150dp"
+                            android:paddingHorizontal="5dp"
+                            android:paddingVertical="5dp"
+                            android:paddingLeft="10dp"
+                            android:textSize="14sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/profile_text_residence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.3"
+                            android:maxWidth="50dp"
+                            android:text="@string/residence"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/profile_input_residence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="0.8"
+                            android:background="@drawable/textedit_rounded_borders"
+                            android:drawableLeft="@drawable/ic_place_black_24dp"
+                            android:ems="10"
+                            android:hint="@string/residence_help"
+                            android:inputType="textPersonName"
+                            android:minHeight="48dp"
+                            android:paddingHorizontal="5dp"
+                            android:paddingVertical="5dp"
+                            android:paddingLeft="10dp"
+                            android:textSize="14sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/profile_text_image_url"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.3"
+                            android:maxWidth="50dp"
+                            android:text="@string/profile_picture_image_link"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/profile_input_image_url"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="0.8"
+                            android:background="@drawable/textedit_rounded_borders"
+                            android:ems="10"
+                            android:hint="@string/image_url_help"
+                            android:inputType="textMultiLine|textPersonName"
+                            android:minHeight="48dp"
+                            android:paddingHorizontal="5dp"
+                            android:paddingLeft="10dp"
+                            android:textSize="14sp"
+                            android:paddingVertical="5dp" />
+                    </TableRow>
+
+                </TableLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/editprofile_button_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#2196F3"
+            android:text="@string/edit_profile"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/editprofile_button_cancel"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/editprofile_button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="25dp"
+            android:backgroundTint="#F44336"
+            android:text="@string/cancelar"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editprofile_button_confirm"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="127dp"
+            android:layout_height="43dp"
+            android:backgroundTint="#FFEB3B"
+            android:text="@string/logout"
+            android:textSize="9sp"
+            app:icon="@drawable/ic_login_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
