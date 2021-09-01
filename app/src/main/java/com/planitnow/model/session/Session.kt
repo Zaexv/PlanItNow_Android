@@ -26,7 +26,6 @@ class Session {
                 return false
             }
             instance.token = tokenRes.data?.tokenAuth!!.token
-
             ApolloClientSingleton.instance
             me = ApolloQueryHandler.getLoggedUser().data?.me!!
         } catch (e: ApolloException) {
@@ -48,6 +47,8 @@ class Session {
         if (!res.hasErrors()) {
             verified = true
             instance.token = token
+            ApolloClientSingleton.instance
+            me = ApolloQueryHandler.getLoggedUser().data?.me!!
         }
         return verified
     }
