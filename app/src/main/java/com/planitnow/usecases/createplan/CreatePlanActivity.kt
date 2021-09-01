@@ -80,7 +80,7 @@ class CreatePlanActivity : AppCompatActivity() {
 
         if(successQuery) {
             Toast.makeText(this, R.string.success_creating_plan, Toast.LENGTH_LONG).show()
-            MainActivityRouter().launch(this)
+            this.finish()
         }  else {
             Toast.makeText(this, R.string.error_creating_plan, Toast.LENGTH_LONG).show()
         }

@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         imageView.setOnClickListener(){
-            Toast.makeText(this,"clickado",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Has cerrado sesión",Toast.LENGTH_SHORT).show()
             removeTokenFromSharedPreferences()
         }
 

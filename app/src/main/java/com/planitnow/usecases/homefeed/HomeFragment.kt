@@ -79,6 +79,14 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launchWhenResumed {
+            homeViewModel.refreshPlans()
+            homeAdapter.notifyDataSetChanged()
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
