@@ -41,8 +41,6 @@ class ProfileActivity : AppCompatActivity() {
         binding.profileInputBiography.setText(Session.instance.me.userProfile?.biography)
         binding.profileInputResidence.setText(Session.instance.me.userProfile?.residence)
         binding.profileInputImageUrl.setText(Session.instance.me.userProfile?.urlProfilePicture)
-
-
         binding.activityAppLogo.load(Session.instance.me.userProfile?.urlProfilePicture){
             transformations(CircleCropTransformation())
         }
@@ -56,7 +54,7 @@ class ProfileActivity : AppCompatActivity() {
 
         binding.editprofileButtonConfirm.setOnClickListener() {
             lifecycleScope.launchWhenResumed {
-
+                modifyProfile()
             }
         }
 
@@ -78,6 +76,16 @@ class ProfileActivity : AppCompatActivity() {
         val preferences = this.getSharedPreferences("planitnow", Context.MODE_PRIVATE)
         preferences.edit().putString("TOKEN", "null").apply();
     }
+
+    private suspend fun modifyProfile(){
+        val publicUsername = binding.profileInputUsername.text.toString()
+        val biography = binding.profileInputBiography.text.toString()
+        val residence = binding.profileInputResidence.text.toString()
+        val urlProfilePicture = binding.profileInputImageUrl.text.toString()
+        val ok = profileViewModel.editProfile(this, publicUsername,biography,residence,urlProfilePicture)
+        if(ok) initializeView()
+    }
+
 
 
 }

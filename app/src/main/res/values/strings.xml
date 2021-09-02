@@ -79,5 +79,6 @@
     <string name="image_url_help">Tiene que ser un enlace directo a una imágen</string>
     <string name="logout">Cerrar Sesión</string>
     <string name="logout_action">Se ha cerrado sesión. Surtirá efecto cuando reinicies la app.</string>
+    <string name="success_edit_profile">Se ha editado tu perfil correctamente.</string>
 
 </resources>

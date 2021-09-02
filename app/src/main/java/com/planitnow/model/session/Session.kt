@@ -35,6 +35,16 @@ class Session {
         return true
     }
 
+    suspend fun refreshMe(): Boolean {
+        try {
+            me = ApolloQueryHandler.getLoggedUser().data?.me!!
+        } catch (e: ApolloException) {
+            println("Apollo Error: " + e.message)
+            return false;
+        }
+        return true
+    }
+
     suspend fun verifyToken(token: String): Boolean {
         var verified = false
         val res = try {

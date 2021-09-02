@@ -1,0 +1,27 @@
+mutation editProfile(
+    $publicUsername: String = null,
+    $biography: String = null,
+    $residence: String = null,
+    $urlProfilePicture: String = null){
+
+    editProfile(
+        publicUsername: $publicUsername,
+        biography: $biography,
+        residence: $residence,
+        urlProfilePicture: $urlProfilePicture
+    ){
+        userProfile{
+            user {
+                id,
+                username
+            }
+            id,
+            publicUsername,
+            biography,
+            residence,
+            urlProfilePicture,
+        },
+
+    }
+
+}

@@ -67,4 +67,16 @@ object ApolloMutationHandler {
         )
     }
 
+    suspend fun editProfile(publicUsername: String, biography: String,
+                            residence: String, urlProfilePicture: String): ApolloResponse<EditProfileMutation.Data> {
+        return ApolloClientSingleton.instance.apolloClient.mutate(
+            EditProfileMutation(
+                publicUsername = Optional.Present(publicUsername),
+                biography = Optional.Present(biography),
+                residence = Optional.Present(residence),
+                urlProfilePicture = Optional.Present(urlProfilePicture),
+            )
+        )
+    }
+
 }

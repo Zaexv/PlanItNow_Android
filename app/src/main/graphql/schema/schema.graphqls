@@ -133,6 +133,8 @@ type PlanParticipationType {
 }
 
 type Mutation {
+  editProfile(biography: String = null, publicUsername: String = null, residence: String = null, urlProfilePicture: String = null): EditProfile
+
   sendFriendRequest(toUsername: String!): SendFriendRequest
 
   acceptFriendRequest(frId: Int!): AcceptFriendRequest
@@ -161,6 +163,10 @@ type Mutation {
   verifyToken(token: String = null): Verify
 
   refreshToken(token: String = null): Refresh
+}
+
+type EditProfile {
+  userProfile: UserProfileType
 }
 
 type SendFriendRequest {
