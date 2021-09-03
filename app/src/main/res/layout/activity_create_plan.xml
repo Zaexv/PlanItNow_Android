@@ -219,10 +219,11 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/view_cp_endHour"
+                            android:id="@+id/view_cp_initHour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="15dp"
                             android:layout_marginTop="15dp"
                             android:layout_marginRight="15dp"
                             android:layout_weight="0.2"
@@ -238,12 +239,12 @@
                             tools:ignore="TouchTargetSizeCheck" />
 
                         <EditText
-                            android:id="@+id/view_cp_initHour"
+                            android:id="@+id/view_cp_endHour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginLeft="15dp"
                             android:layout_marginTop="15dp"
+                            android:layout_marginRight="15dp"
                             android:layout_weight="0.2"
                             android:background="@drawable/textedit_rounded_borders"
                             android:drawableLeft="@drawable/ic_clock_black_24dp"
@@ -255,6 +256,7 @@
                             android:minHeight="48dp"
                             android:paddingHorizontal="5dp"
                             tools:ignore="TouchTargetSizeCheck" />
+
                     </LinearLayout>
 
                     <CalendarView
