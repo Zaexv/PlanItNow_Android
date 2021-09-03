@@ -40,6 +40,7 @@ class HomeAdapter(var homeViewModel: HomeViewModel) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val plan = homeViewModel.allPlans.get(position)
+        holder.binding.planOwnerTextView.text = "@"+plan.owner.username
         holder.binding.planTitleTextView.text = plan.title
         holder.binding.planDescriptionTextView.text = plan.description
         val initHour = plan.initHour.toString().subSequence(0, 5)

@@ -1,5 +1,6 @@
 package com.planitnow.usecases.search
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +21,7 @@ import com.planitnow.R
 import com.planitnow.databinding.FragmentSearchBinding
 import com.planitnow.usecases.homefeed.HomeAdapter
 import com.planitnow.usecases.notifications.NotificationsRouter
+import org.w3c.dom.Text
 
 class SearchFragment : Fragment() {
 
@@ -73,16 +76,23 @@ class SearchFragment : Fragment() {
 
         toolbar = (activity as AppCompatActivity).findViewById<Toolbar>(R.id.main_toolbar)
         toolbar.menu.clear()
+
+        toolbar.findViewById<TextView>(R.id.app_text).visibility = View.INVISIBLE
+        toolbar.findViewById<ImageView>(R.id.app_logo).visibility = View.INVISIBLE
+
+
+
+
         toolbar.inflateMenu(R.menu.search_menu)
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_add_friend -> Toast.makeText(
                     toolbar.context,
                     "Añade amigo :)",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 R.id.action_notifications -> NotificationsRouter().launch(requireContext())
-                else -> Toast.makeText(toolbar.context, "purzao", Toast.LENGTH_LONG).show()
+                else -> Toast.makeText(toolbar.context, "purzao", Toast.LENGTH_SHORT).show()
             }
             false
         }

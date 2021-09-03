@@ -2,6 +2,7 @@ package com.planitnow.usecases.viewfriends
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -69,12 +70,13 @@ class FriendsFragment : Fragment() {
     private fun initializeToolbar(){
         toolbar = (activity as AppCompatActivity).findViewById<Toolbar>(R.id.main_toolbar)
         toolbar.menu.clear()
+        toolbar.findViewById<ImageView>(R.id.app_logo).visibility = View.VISIBLE
         toolbar.inflateMenu(R.menu.friends_menu)
         toolbar.setOnMenuItemClickListener{ item ->
             when (item.itemId){
                 R.id.action_add_friend -> showAddFriendDialog()
                 R.id.action_notifications -> NotificationsRouter().launch(requireContext())
-                else -> Toast.makeText(toolbar.context,"purzao",Toast.LENGTH_LONG).show()
+                else -> Toast.makeText(toolbar.context,"purzao",Toast.LENGTH_SHORT).show()
             }
             false
         }

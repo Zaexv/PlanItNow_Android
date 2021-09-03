@@ -39,6 +39,7 @@ class SearchAdapter(var searchViewModel: SearchViewModel) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val plan = searchViewModel.foundPlans.get(position)
+        holder.binding.planOwnerTextView.text = "@"+plan.owner.username
         holder.binding.planTitleTextView.text = plan.title
         holder.binding.planDescriptionTextView.text = plan.description
         val initHour = plan.initHour.toString().subSequence(0, 5)

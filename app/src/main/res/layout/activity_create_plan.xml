@@ -14,174 +14,259 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/secondaryDarkColor"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="109dp"
             tools:layout_editor_absoluteY="109dp">
 
-            <Switch
-                android:id="@+id/view_cp_public"
-                android:layout_width="129dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="40dp"
-                android:minHeight="48dp"
-                android:text="Público"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            <include
+                android:id="@+id/main_toolbar"
+                layout="@layout/main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></include>
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="20dp" />
-
-            <EditText
-                android:id="@+id/view_cp_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:fontFamily="sans-serif-black"
-                android:gravity="center_horizontal"
-                android:hint="Título"
-                android:inputType="textMultiLine"
-                android:minHeight="48dp"
-                android:text="" />
-
-            <EditText
-                android:id="@+id/view_cp_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="10dp"
-                android:ems="10"
-                android:hint="Descripción"
-                android:inputType="textMultiLine"
-                android:minHeight="48dp"
-                android:text="" />
-
-            <EditText
-                android:id="@+id/view_cp_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="10dp"
-                android:ems="10"
-                android:hint="Localización"
-                android:inputType="textMultiLine"
-                android:minHeight="48dp"
-                android:text="" />
-
-            <EditText
-                android:id="@+id/view_cp_imageURL"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="10dp"
-                android:ems="10"
-                android:hint="Enlace a la Imagen"
-                android:inputType="textMultiLine"
-                android:minHeight="48dp"
-                android:text="" />
+                android:animateLayoutChanges="true"
+                android:clickable="false"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="15dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="true">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    <Switch
+                        android:id="@+id/view_cp_public"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:background="@color/yellow_primary_light"
+                        android:gravity="right|center_vertical"
+                        android:minHeight="30dp"
+                        android:text="@string/is_public"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@android:color/darker_gray" />
 
-                <TextView
-                    android:id="@+id/view_cp_from"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="sans-serif-black"
-                    android:gravity="center_horizontal"
-                    android:text="@string/from"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    <EditText
+                        android:id="@+id/view_cp_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/yellow_primary_light"
+                        android:ems="10"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:hint="@string/add_title"
+                        android:inputType="textMultiLine"
+                        android:minHeight="80dp"
+                        android:paddingHorizontal="10dp"
+                        android:text=""
+                        android:textColorHighlight="@color/black"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/view_cp_to"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="sans-serif-black"
-                    android:gravity="center_horizontal"
-                    android:text="@string/to"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
+                    <View
+                        android:id="@+id/divider6"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_weight="0.2"
+                        android:background="@color/black"
+                        android:scaleY="1" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp" />
+                    <EditText
+                        android:id="@+id/view_cp_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:background="@color/white"
+                        android:ems="10"
+                        android:hint="@string/plan_description_hint"
+                        android:inputType="textMultiLine"
+                        android:minHeight="80dp"
+                        android:paddingLeft="15dp"
+                        android:paddingEnd="10dp"
+                        android:text=""
+                        android:textColorHighlight="@color/black" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    <View
+                        android:id="@+id/divider7"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="0.2"
+                        android:background="@android:color/darker_gray"
+                        android:scaleY="1" />
 
-                <EditText
-                    android:id="@+id/view_cp_initHour"
-                    android:focusable="false"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:gravity="center_horizontal"
-                    android:inputType="time"
-                    android:minHeight="48dp"
-                    android:hint="8:50"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    <EditText
+                        android:id="@+id/view_cp_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/ic_place_black_24dp"
+                        android:ems="10"
+                        android:hint="@string/location_text"
+                        android:inputType="textMultiLine"
+                        android:minHeight="80dp"
+                        android:paddingLeft="15dp"
+                        android:paddingEnd="10dp"
+                        android:text=""
+                        android:textColorHighlight="@color/black" />
 
-                <EditText
-                    android:id="@+id/view_cp_endHour"
-                    android:focusable="false"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:gravity="center_horizontal"
-                    android:hint="13:00"
-                    android:inputType="time"
-                    android:minHeight="48dp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    <View
+                        android:id="@+id/divider8"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="0.2"
+                        android:background="@android:color/darker_gray"
+                        android:scaleY="1" />
 
-            </LinearLayout>
+                    <EditText
+                        android:id="@+id/view_cp_imageURL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/ic_perm_media_black_24dp"
+                        android:ems="10"
+                        android:hint="@string/image_link_text"
+                        android:inputType="textMultiLine"
+                        android:minHeight="80dp"
+                        android:paddingLeft="15dp"
+                        android:paddingEnd="10dp"
+                        android:text=""
+                        android:textColorHighlight="@color/black" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="1" />
+                    <View
+                        android:id="@+id/divider9"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="0.2"
+                        android:background="@android:color/darker_gray"
+                        android:scaleY="1" />
 
-            <TextView
-                android:id="@+id/view_cp_theday"
+                    <EditText
+                        android:id="@+id/view_cp_max_participants"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/ic_people_outline_black_24dp"
+                        android:ems="10"
+                        android:hint="@string/max_participants_int"
+                        android:inputType="number"
+                        android:minHeight="80dp"
+                        android:paddingLeft="15dp"
+                        android:paddingEnd="10dp"
+                        android:text=""
+                        android:textColorHighlight="@color/black" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-black"
-                android:gravity="center_horizontal"
-                android:text="@string/theDay"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:animateLayoutChanges="true"
+                android:clickable="false"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="15dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="0dp">
 
-            <CalendarView
-                android:id="@+id/view_cp_init_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                    <TextView
+                        android:id="@+id/cp_date_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:background="@color/yellow_primary_light"
+                        android:drawableLeft="@drawable/ic_event_black_24dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:text="@string/day_and_hour"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                    <View
+                        android:id="@+id/divider3"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_weight="0.2"
+                        android:background="@color/black"
+                        android:scaleY="1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="0.2"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/view_cp_endHour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_weight="0.2"
+                            android:background="@drawable/textedit_rounded_borders"
+                            android:drawableLeft="@drawable/ic_clock_black_24dp"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:hint="@string/init_hour"
+                            android:inputType="time"
+                            android:minHeight="48dp"
+                            android:paddingHorizontal="5dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <EditText
+                            android:id="@+id/view_cp_initHour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="0.2"
+                            android:background="@drawable/textedit_rounded_borders"
+                            android:drawableLeft="@drawable/ic_clock_black_24dp"
+                            android:ems="10"
+                            android:focusable="false"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:hint="@string/end_hour"
+                            android:inputType="time"
+                            android:minHeight="48dp"
+                            android:paddingHorizontal="5dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </LinearLayout>
+
+                    <CalendarView
+                        android:id="@+id/view_cp_init_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginVertical="15dp"
+                        android:background="@drawable/textedit_rounded_borders" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/view_cp_button"
@@ -190,7 +275,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="Crear Plan" />
+                android:text="Crear Plan"
+                app:icon="@drawable/ic_post_add_black_24dp" />
+
         </LinearLayout>
     </ScrollView>
 

@@ -1,15 +1,11 @@
 package com.planitnow.usecases.mainactivity
 
-import android.content.Context
 import android.os.Bundle
 import android.widget.ImageView
-import android.widget.Toast
-import android.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import coil.api.load
 import coil.transform.CircleCropTransformation
@@ -40,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         )
         //setupActionBarWithNavController(navController, appBarConfiguration)
 
-        val imageView = findViewById<ImageView>(R.id.app_logo)
+        val imageView = findViewById<ImageView>(R.id.profile_logo)
 
         imageView.load(Session.instance.me.userProfile!!.urlProfilePicture){
             transformations(CircleCropTransformation())

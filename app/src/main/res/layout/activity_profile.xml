@@ -17,11 +17,11 @@
             android:id="@+id/activity_app_logo"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="10dp"
+            android:elevation="15dp"
             app:layout_constraintBottom_toTopOf="@+id/cardView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.114"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/planitnowlogo" />
@@ -31,11 +31,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="90dp"
             android:elevation="5dp"
-            app:cardBackgroundColor="@color/yellow_primary"
+            app:cardBackgroundColor="@color/yellow_primary_light"
             app:cardCornerRadius="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -211,9 +211,9 @@
                             android:inputType="textMultiLine|textPersonName"
                             android:minHeight="48dp"
                             android:paddingHorizontal="5dp"
+                            android:paddingVertical="5dp"
                             android:paddingLeft="10dp"
-                            android:textSize="14sp"
-                            android:paddingVertical="5dp" />
+                            android:textSize="14sp" />
                     </TableRow>
 
                 </TableLayout>
@@ -260,11 +260,18 @@
             android:id="@+id/logout_button"
             android:layout_width="127dp"
             android:layout_height="43dp"
-            android:backgroundTint="#FFEB3B"
+            android:layout_marginStart="151dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/red_dark"
             android:text="@string/logout"
+            android:textColor="#FFFFFF"
             android:textSize="9sp"
             app:icon="@drawable/ic_login_black_24dp"
+            app:iconTint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/activity_app_logo"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

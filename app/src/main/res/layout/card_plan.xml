@@ -11,8 +11,8 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardBackgroundColor="#FFFFFFFF"
-    app:cardCornerRadius="1dp"
-    app:cardElevation="1dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="3dp"
     app:cardUseCompatPadding="true"
     app:contentPadding="3dp">
 
@@ -32,8 +32,8 @@
                 android:id="@+id/planImageView"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="4dp"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_event_black_24dp" />
 
@@ -49,6 +49,15 @@
                 android:layout_toEndOf="@+id/planImageView"
                 android:layout_toRightOf="@+id/planImageView"
                 android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/planOwnerTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:text="@Edu"
+                    android:textColor="@color/secondaryDarkColor"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/planTitleTextView"

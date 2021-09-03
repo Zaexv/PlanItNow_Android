@@ -40,11 +40,11 @@ RecyclerView.Adapter<NotificationsAdapter.ViewHolder>(){
                         holder.binding.layoutNotificationButtons.visibility = View.GONE
                         Toast.makeText(holder.binding.root.context,
                             R.string.success_operation,
-                            Toast.LENGTH_LONG).show()
+                            Toast.LENGTH_SHORT).show()
                     }else {
                         Toast.makeText(holder.binding.root.context,
                             R.string.error_operation,
-                            Toast.LENGTH_LONG).show()
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -55,11 +55,11 @@ RecyclerView.Adapter<NotificationsAdapter.ViewHolder>(){
                         holder.binding.layoutNotificationButtons.visibility = View.GONE
                         Toast.makeText(holder.binding.root.context,
                             R.string.success_operation,
-                            Toast.LENGTH_LONG).show()
+                            Toast.LENGTH_SHORT).show()
                     }else {
                         Toast.makeText(holder.binding.root.context,
                             R.string.error_operation,
-                            Toast.LENGTH_LONG).show()
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
             }

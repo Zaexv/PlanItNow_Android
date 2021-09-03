@@ -40,9 +40,10 @@
             android:drawableLeft="@drawable/ic_account_circle_black_24dp"
             android:drawablePadding="10dp"
             android:ems="10"
-            android:hint="Username"
+            android:hint="@string/username"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
+            android:paddingLeft="5dp"
             android:visibility="gone" />
 
         <Space
@@ -58,9 +59,10 @@
             android:drawableLeft="@drawable/ic_lock_black_24dp"
             android:drawablePadding="10dp"
             android:ems="10"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:minHeight="48dp"
+            android:paddingLeft="5dp"
             android:visibility="gone" />
 
         <Space

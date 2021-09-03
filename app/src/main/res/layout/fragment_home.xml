@@ -26,7 +26,7 @@
         android:layout_margin="25dp"
         android:contentDescription="@string/app_name"
         android:src="@android:drawable/ic_menu_edit"
-        app:backgroundTint="?android:attr/colorPressedHighlight"
+        app:backgroundTint="@color/yellow_primary_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/listPlanRecyclerView"
         app:rippleColor="@android:color/holo_blue_light" />

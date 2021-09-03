@@ -1,7 +1,8 @@
 mutation createPlan($description: String!, $endHour: Time!, $initDate: Date!, $initHour: Time!,
-    $isPublic: Boolean = null, $location: String!, $title: String!, $urlPlanPicture: String = null){
+    $isPublic: Boolean = null, $location: String!, $title: String!, $urlPlanPicture: String = null,
+    $maxParticipants: Int = 5){
     createPlan(description: $description, endHour: $endHour, initDate: $initDate, initHour: $initHour,
-        isPublic: $isPublic, location:$location, title: $title, urlPlanPicture: $urlPlanPicture){
+        isPublic: $isPublic, location:$location, title: $title, urlPlanPicture: $urlPlanPicture, maxParticipants: $maxParticipants){
         plan {
             id,
             title,

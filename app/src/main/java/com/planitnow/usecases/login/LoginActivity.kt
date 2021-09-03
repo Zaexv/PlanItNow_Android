@@ -58,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
                 addTokenToSharedPreferences()
                 MainActivityRouter().launch(this@LoginActivity)
             } else {
-                Toast.makeText(this@LoginActivity, getText(R.string.login_error), Toast.LENGTH_LONG)
+                Toast.makeText(this@LoginActivity, getText(R.string.login_error), Toast.LENGTH_SHORT)
                     .show()
             }
         }
@@ -80,7 +80,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loadTokenFromSharedPreferences(): String {
         val preferences = this.getSharedPreferences("planitnow", Context.MODE_PRIVATE)
-        Toast.makeText(this,preferences.getString("TOKEN",null), Toast.LENGTH_SHORT).show()
         return preferences.getString("TOKEN","null")!!;
     }
 

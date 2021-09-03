@@ -1,10 +1,13 @@
 package com.planitnow.usecases.viewplan
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,11 +25,13 @@ import com.planitnow.databinding.ActivityViewPlanBinding
 import com.planitnow.model.session.Session
 import com.planitnow.usecases.login.LoginViewModel
 import com.planitnow.usecases.mainactivity.MainActivityRouter
+import com.planitnow.usecases.notifications.NotificationsRouter
 import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
+
 
 class ViewPlanActivity : AppCompatActivity() {
 
@@ -49,6 +54,7 @@ class ViewPlanActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        initializeToolbar()
         if (viewPlanViewModel.detailedPlan.owner.id == Session.instance.me.id) {
             binding.viewPlanOwnerCard.visibility = View.GONE
             binding.viewPlanButtonDelete.visibility = View.VISIBLE
@@ -63,14 +69,14 @@ class ViewPlanActivity : AppCompatActivity() {
                         Toast.makeText(
                             this@ViewPlanActivity,
                             resources.getString(R.string.success_deleting_plan) + " " + viewPlanViewModel.detailedPlan.title,
-                            Toast.LENGTH_LONG
+                            Toast.LENGTH_SHORT
                         ).show()
                         MainActivityRouter().launch(this@ViewPlanActivity)
                     } else {
                         Toast.makeText(
                             this@ViewPlanActivity,
                             R.string.error_deleting_plan,
-                            Toast.LENGTH_LONG
+                            Toast.LENGTH_SHORT
                         ).show()
                     }
                 }
@@ -86,7 +92,7 @@ class ViewPlanActivity : AppCompatActivity() {
     }
 
     private fun bindPlan(detailedPlan: DetailedPlanQuery.DetailedPlan) {
-        if(viewPlanViewModel.userIsParticipating) {
+        if (viewPlanViewModel.userIsParticipating) {
             binding.viewPlanParticipateButton.text = "Desapuntarse"
         } else {
             binding.viewPlanParticipateButton.text = "Apuntarse"
@@ -123,6 +129,21 @@ class ViewPlanActivity : AppCompatActivity() {
             list.size.toString() + "/" + detailedPlan.maxParticipants + " Participantes"
         binding.viewPlanParticipantsText.text = list.toString()
 
+    }
+
+    private fun initializeToolbar() {
+        val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
+        findViewById<ImageView>(R.id.profile_logo).visibility = View.GONE
+        findViewById<ImageView>(R.id.app_logo).visibility = View.GONE
+        setSupportActionBar(toolbar)
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 

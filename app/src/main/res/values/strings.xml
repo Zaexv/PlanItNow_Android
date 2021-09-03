@@ -80,5 +80,14 @@
     <string name="logout">Cerrar Sesión</string>
     <string name="logout_action">Se ha cerrado sesión. Surtirá efecto cuando reinicies la app.</string>
     <string name="success_edit_profile">Se ha editado tu perfil correctamente.</string>
+    <string name="is_public">¿Es público?</string>
+    <string name="day_and_hour">Hora y día</string>
+    <string name="init_hour">Hora Inicio</string>
+    <string name="end_hour">Hora Fin</string>
+    <string name="add_title">Añade un título que haga tu plan fácilmente reconocible</string>
+    <string name="plan_description_hint">¡Cuenta más sobre tu plan!</string>
+    <string name="location_text">¿Dónde?</string>
+    <string name="image_link_text">Añade el enlace a una imágen y la mostraremos en el plan</string>
+    <string name="max_participants_int">Participantes Máximos (def. 5)</string>
 
 </resources>

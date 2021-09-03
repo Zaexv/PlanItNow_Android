@@ -13,7 +13,7 @@
     android:paddingVertical="15dp"
     app:cardBackgroundColor="#FFFFFFFF"
     app:cardCornerRadius="1dp"
-    app:cardElevation="1dp"
+    app:cardElevation="4dp"
     app:cardUseCompatPadding="true"
     app:contentPadding="0dp">
 

@@ -19,7 +19,7 @@ class AddFriendViewModel : ViewModel() {
         if(res.hasErrors()){
             Toast.makeText(context, R.string.error_friend_request,Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, R.string.success_friend_request, Toast.LENGTH_LONG).show()
+            Toast.makeText(context, R.string.success_friend_request, Toast.LENGTH_SHORT).show()
         }
     }
 

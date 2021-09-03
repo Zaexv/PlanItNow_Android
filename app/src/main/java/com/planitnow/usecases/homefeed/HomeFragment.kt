@@ -95,12 +95,13 @@ class HomeFragment : Fragment() {
     private fun initializeToolbar(){
         toolbar = (activity as AppCompatActivity).findViewById<Toolbar>(R.id.main_toolbar)
         toolbar.menu.clear()
+        toolbar.findViewById<ImageView>(R.id.app_logo).visibility = View.VISIBLE
         toolbar.inflateMenu(R.menu.home_menu)
         toolbar.setOnMenuItemClickListener{ item ->
             when (item.itemId){
-                R.id.action_add_friend -> Toast.makeText(toolbar.context,"Añade amigo :)",Toast.LENGTH_LONG).show()
+                R.id.action_add_friend -> Toast.makeText(toolbar.context,"Añade amigo :)",Toast.LENGTH_SHORT).show()
                 R.id.action_notifications -> NotificationsRouter().launch(requireContext())
-                else -> Toast.makeText(toolbar.context,"purzao",Toast.LENGTH_LONG).show()
+                else -> Toast.makeText(toolbar.context,"purzao",Toast.LENGTH_SHORT).show()
             }
             false
         }

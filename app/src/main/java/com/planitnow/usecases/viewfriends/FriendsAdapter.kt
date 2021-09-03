@@ -30,7 +30,7 @@ class FriendsAdapter(var friendsViewModel: FriendsViewModel) :
             transformations(CircleCropTransformation())
         }
         holder.binding.root.setOnClickListener(){
-            Toast.makeText(holder.itemView.context,"Clicked friend!:) ${friend.publicUsername}",Toast.LENGTH_SHORT).show()
+            
         }
     }
 

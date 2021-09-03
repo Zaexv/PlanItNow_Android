@@ -7,6 +7,9 @@ query AllPlans{
       initHour,
       endHour,
       location,
-      urlPlanPicture
+      urlPlanPicture,
+      owner {
+          username
+        }
     }
 }

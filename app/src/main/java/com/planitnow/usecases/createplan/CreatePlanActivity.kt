@@ -2,9 +2,12 @@ package com.planitnow.usecases.createplan
 
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.apollographql.apollo3.exception.ApolloException
 import com.planitnow.R
 import com.planitnow.backend.ApolloMutationHandler
@@ -47,6 +50,8 @@ class CreatePlanActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        initializeToolbar()
+
     }
 
     private fun createPlan() {
@@ -57,7 +62,8 @@ class CreatePlanActivity : AppCompatActivity() {
         val endHour = binding.viewCpEndHour.text.toString()
         val initDate = SimpleDateFormat("yyyy-MM-dd").format(calendar.time)
         val urlPlanPicture = binding.viewCpImageURL.text.toString()
-
+        var maxParticipants = binding.viewCpMaxParticipants.text.toString()
+        if (maxParticipants == "") maxParticipants = "5"
         //TODO refactor a ViewModel
         var successQuery = false
         runBlocking {
@@ -69,6 +75,7 @@ class CreatePlanActivity : AppCompatActivity() {
                     initHour = initHour,
                     endHour = endHour,
                     initDate = initDate,
+                    maxParticipants = Integer.parseInt(maxParticipants),
                     isPublic = publicActive,
                     urlPlanPicture = urlPlanPicture
                 )
@@ -79,10 +86,10 @@ class CreatePlanActivity : AppCompatActivity() {
         }
 
         if(successQuery) {
-            Toast.makeText(this, R.string.success_creating_plan, Toast.LENGTH_LONG).show()
+            Toast.makeText(this, R.string.success_creating_plan, Toast.LENGTH_SHORT).show()
             this.finish()
         }  else {
-            Toast.makeText(this, R.string.error_creating_plan, Toast.LENGTH_LONG).show()
+            Toast.makeText(this, R.string.error_creating_plan, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -94,6 +101,21 @@ class CreatePlanActivity : AppCompatActivity() {
             view.setText(timeString)
         }
         TimePickerDialog(this, timeSetListener, 4, 20, true).show()
+    }
+
+    private fun initializeToolbar() {
+        val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
+        findViewById<ImageView>(R.id.profile_logo).visibility = View.GONE
+        findViewById<ImageView>(R.id.app_logo).visibility = View.GONE
+        setSupportActionBar(toolbar)
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }

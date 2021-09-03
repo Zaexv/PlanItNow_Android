@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <include
             android:id="@+id/main_toolbar"
             layout="@layout/main_toolbar"></include>
@@ -22,7 +23,7 @@
             android:layout_height="240dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_dashboard_black_24dp" />
+            app:srcCompat="@drawable/ic_clock_black_24dp" />
 
         <View
             android:id="@+id/divider"
@@ -40,24 +41,6 @@
             android:translationX="-25dp"
             android:translationY="-25dp" />
 
-        <TextView
-            android:id="@+id/view_plan_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="15dp"
-            android:text="Titulo"
-            android:textAlignment="viewStart"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/view_plan_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="20dp"
-            android:text="Descripcion"
-            android:textAlignment="viewStart" />
-
         <androidx.cardview.widget.CardView
 
             android:id="@+id/view_plan_basic_card"
@@ -65,8 +48,8 @@
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
             android:clipToPadding="true"
-            android:paddingEnd="10dp"
-            app:cardBackgroundColor="@color/yellow_primary_light"
+            android:translationY="-25dp"
+            app:cardBackgroundColor="@color/design_default_color_on_primary"
             app:cardCornerRadius="15dp"
             app:cardElevation="5dp"
             app:cardPreventCornerOverlap="true"
@@ -80,12 +63,33 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/view_plan_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:id="@+id/view_plan_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewStart" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
                     android:id="@+id/view_plan_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_event_black_24dp"
                     android:drawablePadding="10dp"
-                    android:text="Viernes 30 de Junio"
                     android:textAlignment="viewStart"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="@color/black"
@@ -102,7 +106,6 @@
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_clock_black_24dp"
                         android:drawablePadding="10dp"
-                        android:text="De 4 a 8"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp"
@@ -112,7 +115,6 @@
                         android:id="@+id/view_plan_endHour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="De 4 a 8"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -126,7 +128,6 @@
                     android:drawableLeft="@drawable/ic_place_black_24dp"
                     android:drawablePadding="10dp"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="Casa de Edu"
                     android:textAlignment="viewStart"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textSize="16sp" />
@@ -143,13 +144,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:attr/listDivider"
-            android:scaleY="1"
+            android:scaleY="3"
             tools:layout_editor_absoluteX="-198dp"
             tools:layout_editor_absoluteY="30dp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
 
         <androidx.cardview.widget.CardView
 
@@ -159,9 +156,9 @@
             android:animateLayoutChanges="true"
             android:clipToPadding="true"
             android:paddingEnd="10dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardBackgroundColor="@color/secondaryDarkColor"
             app:cardCornerRadius="15dp"
-            app:cardElevation="1dp"
+            app:cardElevation="8dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             app:contentPadding="10dp">
@@ -201,7 +198,7 @@
                         android:fontFamily="sans-serif-light"
                         android:text="@string/created_by"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/white"
                         android:textSize="10sp" />
 
                     <TextView
@@ -213,18 +210,16 @@
                         android:inputType="textImeMultiLine"
                         android:maxLines="2"
                         android:singleLine="false"
-                        android:text="TextView"
                         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/view_plan_owner_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="12sp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -265,7 +260,7 @@
                         android:id="@+id/view_plan_number_participants_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="3/5 Participantes"
+                        android:text=" Participantes"
                         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
@@ -274,7 +269,6 @@
                         android:id="@+id/view_plan_participants_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@Pepito, @Zaexv, @Pepe"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="#959494"
                         android:textSize="12sp" />

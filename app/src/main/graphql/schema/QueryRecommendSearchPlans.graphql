@@ -7,7 +7,10 @@ query recommendOrSearch($searchString: String = null){
         initHour,
         endHour,
         location,
-        urlPlanPicture
+        urlPlanPicture,
+        owner {
+            username
+        }
     }
 }
 

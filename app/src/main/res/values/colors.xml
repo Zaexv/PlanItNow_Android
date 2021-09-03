@@ -7,8 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="yellow_primary">#ffff8d</color>
-    <color name="yellow_primary_dark">#cacc5d</color>
+    <color name="yellow_primary">#FFEB3B</color>
+    <color name="yellow_primary_dark">#FFEB3B</color>
     <color name="yellow_primary_light">#ffffbf</color>
     <color name="yellow_secondary">#fff176</color>
     <color name="yellow_secondary_light">#ffffa8</color>
@@ -17,4 +17,12 @@
     <color name="red_secondary">#ff3d00</color>
     <color name="red_light">#ff7539</color>
     <color name="red_dark">#c30000</color>
+    <color name="primaryColor">#ffeb3b</color>
+    <color name="primaryLightColor">#ffff72</color>
+    <color name="primaryDarkColor">#c8b900</color>
+    <color name="secondaryColor">#26c6da</color>
+    <color name="secondaryLightColor">#6ff9ff</color>
+    <color name="secondaryDarkColor">#0095a8</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#000000</color>
 </resources>
