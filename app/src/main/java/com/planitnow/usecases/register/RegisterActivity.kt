@@ -8,12 +8,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.planitnow.databinding.ActivityRegisterBinding
+import java.text.SimpleDateFormat
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private val registerViewModel: RegisterViewModel by viewModels()
+    private var calendar: Calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.registerButtonCancel.setOnClickListener() {
             this.finish()
         }
+
 
         binding.registerButtonConfirm.setOnClickListener() {
             lifecycleScope.launchWhenResumed {
@@ -57,10 +60,10 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun buildDatePicker(view: EditText) {
         val dateSetListener =
-            DatePickerDialog.OnDateSetListener { datePicker: DatePicker, year: Int, month: Int, day: Int ->
-                val dayString = if (day < 10) "0$day" else "$day"
-                val monthString = if (month < 10) "0$month" else "$month"
-                view.setText("$year-$monthString-$dayString")
+            DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                calendar.set(year, month, dayOfMonth)
+                val birthDate = SimpleDateFormat("yyyy-MM-dd").format(calendar.time)
+                binding.registerInputBirthdate.setText(birthDate)
             }
         DatePickerDialog(this, dateSetListener, 2020, 9, 25).show()
     }
