@@ -14,6 +14,7 @@ import com.planitnow.databinding.ActivityLoginBinding
 import com.planitnow.model.session.Session
 import com.planitnow.usecases.register.RegisterRouter
 import com.planitnow.usecases.mainactivity.MainActivityRouter
+import kotlinx.coroutines.runBlocking
 
 class LoginActivity : AppCompatActivity() {
     private val loginViewModel: LoginViewModel by viewModels()

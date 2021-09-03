@@ -8,6 +8,8 @@ import com.planitnow.backend.ApolloLoginHandler
 import com.planitnow.backend.ApolloMutationHandler
 import com.planitnow.backend.ApolloQueryHandler
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.runBlocking
+import java.lang.NullPointerException
 
 class Session {
 
@@ -30,7 +32,7 @@ class Session {
             me = ApolloQueryHandler.getLoggedUser().data?.me!!
         } catch (e: ApolloException) {
             println("Apollo Error: " + e.message)
-            return false;
+            return false
         }
         return true
     }
@@ -55,6 +57,7 @@ class Session {
         }
 
         if (!res.hasErrors()) {
+            println("No hay errores")
             verified = true
             instance.token = token
             ApolloClientSingleton.instance
