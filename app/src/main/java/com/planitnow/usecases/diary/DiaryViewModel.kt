@@ -1,17 +1,17 @@
-package com.planitnow.usecases.homefeed
+package com.planitnow.usecases.diary
 
 import androidx.lifecycle.ViewModel
 import com.apollographql.apollo3.exception.ApolloException
 import com.graphql.models.AllPlansQuery
 import com.planitnow.backend.ApolloQueryHandler
 
-class HomeViewModel : ViewModel() {
+class DiaryViewModel : ViewModel() {
 
     var allPlans = listOf<AllPlansQuery.AllPlan>()
 
     suspend fun refreshPlans() {
         val res = try {
-            ApolloQueryHandler.getAllPlans(false)
+            ApolloQueryHandler.getAllPlans(isDiary=true)
         } catch (e: ApolloException) {
             return
         }
@@ -20,5 +20,5 @@ class HomeViewModel : ViewModel() {
             allPlans = plans
         }
     }
-}
 
+}

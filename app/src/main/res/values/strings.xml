@@ -89,5 +89,6 @@
     <string name="location_text">¿Dónde?</string>
     <string name="image_link_text">Añade el enlace a una imágen y la mostraremos en el plan</string>
     <string name="max_participants_int">Participantes Máximos (def. 5)</string>
+    <string name="my_diary">Mi diario</string>
 
 </resources>

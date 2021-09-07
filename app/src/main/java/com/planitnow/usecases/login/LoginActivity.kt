@@ -19,7 +19,7 @@ import kotlinx.coroutines.runBlocking
 class LoginActivity : AppCompatActivity() {
     private val loginViewModel: LoginViewModel by viewModels()
     private lateinit var binding: ActivityLoginBinding
-    private var maxAttempts = 3;
+    private var maxAttempts = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

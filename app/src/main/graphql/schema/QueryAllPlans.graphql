@@ -1,5 +1,5 @@
-query AllPlans{
-    allPlans{
+query AllPlans($isDiary: Boolean){
+    allPlans(isDiary: $isDiary){
       id,
       title,
       description,

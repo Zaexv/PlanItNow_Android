@@ -20,6 +20,11 @@
             android:label="@string/register_activity_title"
             android:theme="@style/Theme.PlanItNow.NoActionBar" />
         <activity
+            android:name="com.planitnow.usecases.diary.DiaryActivity"
+            android:exported="true"
+            android:label="@string/my_diary"
+            android:theme="@style/Theme.PlanItNow.NoActionBar" />
+        <activity
             android:name="com.planitnow.usecases.register.RegisterActivity"
             android:exported="true"
             android:label="@string/register_activity_title"

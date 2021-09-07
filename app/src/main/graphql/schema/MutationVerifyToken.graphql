@@ -1,4 +1,4 @@
-mutation verifyToken($token:String){
+mutation verifyToken($token: String){
     verifyToken(token: $token){
         payload
     }

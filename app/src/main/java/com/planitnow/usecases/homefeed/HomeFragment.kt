@@ -25,6 +25,7 @@ import com.planitnow.R
 import com.planitnow.backend.ApolloQueryHandler
 import com.planitnow.databinding.FragmentHomeBinding
 import com.planitnow.usecases.createplan.CreatePlanRouter
+import com.planitnow.usecases.diary.DiaryRouter
 import com.planitnow.usecases.notifications.NotificationsRouter
 import com.planitnow.usecases.viewplan.ViewPlanRouter
 import kotlinx.coroutines.GlobalScope
@@ -101,11 +102,11 @@ class HomeFragment : Fragment() {
             when (item.itemId){
                 R.id.action_add_friend -> Toast.makeText(toolbar.context,"Añade amigo :)",Toast.LENGTH_SHORT).show()
                 R.id.action_notifications -> NotificationsRouter().launch(requireContext())
+                R.id.action_diary -> DiaryRouter().launch(requireContext())
                 else -> Toast.makeText(toolbar.context,"purzao",Toast.LENGTH_SHORT).show()
             }
             false
         }
-
     }
 
 }

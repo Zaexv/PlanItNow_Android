@@ -9,7 +9,7 @@ type Query {
 
   me: UserType
 
-  allPlans: [PlanType]
+  allPlans(isDiary: Boolean = false): [PlanType]
 
   detailedPlan(id: Int!): PlanType
 

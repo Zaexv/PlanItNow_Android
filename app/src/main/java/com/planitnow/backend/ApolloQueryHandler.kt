@@ -1,18 +1,13 @@
 package com.planitnow.backend
 
-import android.content.SharedPreferences
-import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.ApolloResponse
 import com.apollographql.apollo3.api.Optional
-import com.apollographql.apollo3.network.http.HttpNetworkTransport
 import com.graphql.models.*
-import com.graphql.models.adapter.ReceivedFriendRequestsQuery_ResponseAdapter
-import com.planitnow.model.session.Session
 
 object ApolloQueryHandler {
 
-    suspend fun getAllPlans(): ApolloResponse<AllPlansQuery.Data> {
-        return ApolloClientSingleton.instance.apolloClient.query(AllPlansQuery())
+    suspend fun getAllPlans(isDiary: Boolean): ApolloResponse<AllPlansQuery.Data> {
+        return ApolloClientSingleton.instance.apolloClient.query(AllPlansQuery(isDiary = isDiary))
     }
 
     suspend fun getSearchRecommendPlans(searchString: String): ApolloResponse<RecommendOrSearchQuery.Data> {
