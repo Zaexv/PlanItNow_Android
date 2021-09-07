@@ -8,25 +8,24 @@
         android:layout_height="match_parent" >
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFEB3B">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primaryColor">
 
 
-    <ImageView
-        android:id="@+id/register_app_logo"
-        android:layout_width="134dp"
-        android:layout_height="162dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/planitnowlogo" />
+        <ImageView
+            android:id="@+id/register_app_logo"
+            android:layout_width="134dp"
+            android:layout_height="162dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/planitnowlogo" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -37,7 +36,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="90dp"
             android:elevation="5dp"
-            app:cardBackgroundColor="@color/primaryLightColor"
+            app:cardBackgroundColor="@color/yellow_primary_light"
             app:cardCornerRadius="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
