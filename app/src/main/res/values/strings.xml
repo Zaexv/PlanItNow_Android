@@ -47,7 +47,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="friend_request">Solicitud de Amistad</string>
     <string name="sent_friend_request">te ha enviado una solicitud de amistad</string>
-    <string name="success_operation">Correcto</string>
+    <string name="success_operation">Acción ejecutada con éxito</string>
     <string name="error_operation">Ha habido un error. Prueba más tarde.</string>
     <string name="participate">Apuntarse</string>
     <string name="register_activity_title">Registrarse</string>
