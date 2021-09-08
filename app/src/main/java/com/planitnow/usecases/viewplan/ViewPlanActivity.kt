@@ -132,6 +132,7 @@ class ViewPlanActivity : AppCompatActivity() {
         toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         findViewById<ImageView>(R.id.profile_logo).visibility = View.GONE
         findViewById<ImageView>(R.id.app_logo).visibility = View.GONE
+        toolbar.menu.clear()
         toolbar.title = getText(R.string.view_plan)
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
         toolbar.setNavigationOnClickListener {
