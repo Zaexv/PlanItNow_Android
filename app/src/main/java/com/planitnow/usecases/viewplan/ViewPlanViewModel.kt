@@ -22,7 +22,7 @@ class ViewPlanViewModel : ViewModel() {
         val detailedPlanQuery = ApolloQueryHandler.getDetailedPlan(Integer.parseInt(id))
 
         if (detailedPlanQuery.hasErrors())
-            throw Exception("Ha habido un error obteniendo el plan") //TODO meter en Strings.xml
+            throw Exception("Ha habido un error obteniendo el plan")
 
         detailedPlan = detailedPlanQuery.data?.detailedPlan!!
 

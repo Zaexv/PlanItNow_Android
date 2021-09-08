@@ -16,5 +16,11 @@ class EditPlanRouter : BaseActivityRouter {
         (activity as Activity).overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
     }
 
+    fun launchToId(activity: Context, id: String){
+        val intent = intent(activity)
+        intent.putExtra("id",id)
+        activity.startActivity(intent)
+        (activity as Activity).overridePendingTransition(R.anim.activity_in, R.anim.activity_out)
+    }
 
 }

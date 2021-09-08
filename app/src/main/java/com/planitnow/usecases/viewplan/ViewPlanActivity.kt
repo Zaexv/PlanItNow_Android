@@ -135,7 +135,7 @@ class ViewPlanActivity : AppCompatActivity() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_delete_plan -> showDeleteDialog()
-                R.id.action_edit_plan -> EditPlanRouter().launch(this)
+                R.id.action_edit_plan -> EditPlanRouter().launchToId(this,viewPlanViewModel.detailedPlan.id)
                 else -> Toast.makeText(toolbar.context, "purzao", Toast.LENGTH_SHORT).show()
             }
             false

@@ -276,8 +276,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="Crear Plan"
-                app:icon="@drawable/ic_post_add_black_24dp" />
+                android:text="Crear Plan" />
 
         </LinearLayout>
     </ScrollView>
