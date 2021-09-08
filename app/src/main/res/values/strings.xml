@@ -90,5 +90,14 @@
     <string name="image_link_text">Añade el enlace a una imágen y la mostraremos en el plan</string>
     <string name="max_participants_int">Participantes Máximos (def. 5)</string>
     <string name="my_diary">Mi diario</string>
+    <string name="delete_plan">Borrar Plan</string>
+    <string name="sure_delete_plan">¿Estás seguro de que quieres eliminar el plan?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="join_plan">Apuntarse</string>
+    <string name="leave_plan">Desapuntarse</string>
+    <string name="participants">Participantes</string>
+    <string name="edit_plan">Editar Plan</string>
+    <string name="edit">Editar</string>
 
 </resources>

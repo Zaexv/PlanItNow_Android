@@ -1,33 +1,24 @@
 package com.planitnow.usecases.viewplan
 
+import android.content.DialogInterface
 import android.os.Bundle
-import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import coil.api.load
 import coil.size.Scale
 import coil.transform.CircleCropTransformation
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.graphql.models.DetailedPlanQuery
 import com.planitnow.R
-import com.planitnow.backend.ApolloQueryHandler
-import com.planitnow.databinding.ActivityMainBinding
 import com.planitnow.databinding.ActivityViewPlanBinding
 import com.planitnow.model.session.Session
-import com.planitnow.usecases.login.LoginViewModel
+import com.planitnow.usecases.editplan.EditPlanRouter
 import com.planitnow.usecases.mainactivity.MainActivityRouter
-import com.planitnow.usecases.notifications.NotificationsRouter
-import kotlinx.coroutines.runBlocking
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -37,18 +28,19 @@ class ViewPlanActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityViewPlanBinding
     private val viewPlanViewModel: ViewPlanViewModel by viewModels()
+    private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val planID = intent.getStringExtra("id")
         println("El plan ID es $planID")
         println("El intent es:" + intent.toString())
+
         lifecycleScope.launchWhenResumed {
             val detailedPlan = viewPlanViewModel.getPlanById(planID!!)
             initView()
             bindPlan(detailedPlan)
         }
-
         binding = ActivityViewPlanBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
@@ -57,30 +49,8 @@ class ViewPlanActivity : AppCompatActivity() {
         initializeToolbar()
         if (viewPlanViewModel.detailedPlan.owner.id == Session.instance.me.id) {
             binding.viewPlanOwnerCard.visibility = View.GONE
-            binding.viewPlanButtonDelete.visibility = View.VISIBLE
             binding.viewPlanParticipateButton.visibility = View.GONE
-            binding.viewPlanButtonDelete.setOnClickListener() {
-
-                //TODO añadir cuadro de Diálogo ¿Seguro que quieres borrar el plan?
-
-                lifecycleScope.launchWhenResumed {
-                    val ok = viewPlanViewModel.deleteViewingPlan()
-                    if (ok) {
-                        Toast.makeText(
-                            this@ViewPlanActivity,
-                            resources.getString(R.string.success_deleting_plan) + " " + viewPlanViewModel.detailedPlan.title,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        MainActivityRouter().launch(this@ViewPlanActivity)
-                    } else {
-                        Toast.makeText(
-                            this@ViewPlanActivity,
-                            R.string.error_deleting_plan,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            }
+            addToolbarMenuListener()
         } else {
             binding.viewPlanParticipateButton.setOnClickListener() {
                 lifecycleScope.launchWhenResumed {
@@ -93,9 +63,9 @@ class ViewPlanActivity : AppCompatActivity() {
 
     private fun bindPlan(detailedPlan: DetailedPlanQuery.DetailedPlan) {
         if (viewPlanViewModel.userIsParticipating) {
-            binding.viewPlanParticipateButton.text = "Desapuntarse"
+            binding.viewPlanParticipateButton.text = getText(R.string.join_plan)
         } else {
-            binding.viewPlanParticipateButton.text = "Apuntarse"
+            binding.viewPlanParticipateButton.text = getText(R.string.leave_plan)
         }
         binding.viewPlanTitle.text = detailedPlan.title
         binding.viewPlanDescription.text = detailedPlan.description
@@ -122,29 +92,74 @@ class ViewPlanActivity : AppCompatActivity() {
             transformations(CircleCropTransformation())
         }
 
-        //TODO poner algo más elegante
         val list =
             detailedPlan.participatingPlan.map { participatingPlan -> participatingPlan.participantUser.user.username }
         binding.viewPlanNumberParticipantsText.text =
-            list.size.toString() + "/" + detailedPlan.maxParticipants + " Participantes"
+            list.size.toString() + "/" + detailedPlan.maxParticipants + " " + getText(R.string.participants)
         binding.viewPlanParticipantsText.text = list.toString()
+    }
 
+    private fun deleteThisPlan() {
+        lifecycleScope.launchWhenResumed {
+            val ok = viewPlanViewModel.deleteViewingPlan()
+            if (ok) {
+                Toast.makeText(
+                    this@ViewPlanActivity,
+                    resources.getString(R.string.success_deleting_plan) + " " + viewPlanViewModel.detailedPlan.title,
+                    Toast.LENGTH_SHORT
+                ).show()
+                MainActivityRouter().launch(this@ViewPlanActivity)
+            } else {
+                Toast.makeText(
+                    this@ViewPlanActivity,
+                    R.string.error_deleting_plan,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     private fun initializeToolbar() {
-        val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
+        toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         findViewById<ImageView>(R.id.profile_logo).visibility = View.GONE
         findViewById<ImageView>(R.id.app_logo).visibility = View.GONE
-        setSupportActionBar(toolbar)
-        val actionBar = supportActionBar
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setDisplayShowHomeEnabled(true)
+        toolbar.title = getText(R.string.view_plan)
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
+    private fun addToolbarMenuListener() {
+        toolbar.inflateMenu(R.menu.view_plan_menu)
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_delete_plan -> showDeleteDialog()
+                R.id.action_edit_plan -> EditPlanRouter().launch(this)
+                else -> Toast.makeText(toolbar.context, "purzao", Toast.LENGTH_SHORT).show()
+            }
+            false
+        }
     }
 
+    private fun showDeleteDialog() {
+        lateinit var dialog: AlertDialog
 
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle(getText(R.string.delete_plan))
+        builder.setMessage(R.string.sure_delete_plan)
+
+        val dialogClickListener = DialogInterface.OnClickListener { _, which ->
+            when (which) {
+                DialogInterface.BUTTON_POSITIVE -> deleteThisPlan()
+            }
+        }
+
+        builder.setPositiveButton(getText(R.string.yes), dialogClickListener)
+        builder.setNeutralButton(getText(R.string.cancel), dialogClickListener)
+
+        dialog = builder.create()
+        dialog.show()
+    }
 }

@@ -49,6 +49,11 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
+            android:name=".usecases.editplan.EditPlanActivity"
+            android:label="@string/edit_plan"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name=".usecases.login.LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
