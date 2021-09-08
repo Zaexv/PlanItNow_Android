@@ -143,6 +143,8 @@ type Mutation {
 
   createPlan(description: String!, endHour: Time!, initDate: Date!, initHour: Time!, isPublic: Boolean = null, location: String!, maxParticipants: Int = null, title: String!, urlPlanPicture: String = null): CreatePlan
 
+  editPlan(description: String = null, endHour: Time = null, initDate: Date = null, initHour: Time = null, isPublic: Boolean = null, location: String = null, maxParticipants: Int = null, planId: Int!, title: String = null, urlPlanPicture: String = null): EditPlan
+
   deletePlan(id: Int!): DeletePlan
 
   """
@@ -182,6 +184,10 @@ type RejectFriendRequest {
 }
 
 type CreatePlan {
+  plan: PlanType
+}
+
+type EditPlan {
   plan: PlanType
 }
 

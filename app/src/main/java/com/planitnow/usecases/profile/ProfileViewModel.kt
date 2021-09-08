@@ -18,7 +18,7 @@ class ProfileViewModel : ViewModel() {
         biography: String,
         residence: String,
         urlProfilePicture: String,
-    ) : Boolean {
+    ): Boolean {
         var res = try {
             ApolloMutationHandler.editProfile(
                 publicUsername,

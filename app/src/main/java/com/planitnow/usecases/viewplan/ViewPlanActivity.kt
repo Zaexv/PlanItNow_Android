@@ -45,6 +45,15 @@ class ViewPlanActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launchWhenResumed {
+            val planID = intent.getStringExtra("id")
+            val detailedPlan = viewPlanViewModel.getPlanById(planID!!)
+            initView()
+            bindPlan(detailedPlan)
+        }
+    }
     private fun initView() {
         initializeToolbar()
         if (viewPlanViewModel.detailedPlan.owner.id == Session.instance.me.id) {
@@ -63,9 +72,9 @@ class ViewPlanActivity : AppCompatActivity() {
 
     private fun bindPlan(detailedPlan: DetailedPlanQuery.DetailedPlan) {
         if (viewPlanViewModel.userIsParticipating) {
-            binding.viewPlanParticipateButton.text = getText(R.string.join_plan)
-        } else {
             binding.viewPlanParticipateButton.text = getText(R.string.leave_plan)
+        } else {
+            binding.viewPlanParticipateButton.text = getText(R.string.join_plan)
         }
         binding.viewPlanTitle.text = detailedPlan.title
         binding.viewPlanDescription.text = detailedPlan.description

@@ -35,6 +35,34 @@ object ApolloMutationHandler {
         )
     }
 
+    suspend fun editPlan(
+        planID: Int,
+        title: String,
+        description: String,
+        location: String,
+        initHour: String,
+        endHour: String,
+        initDate: String,
+        isPublic: Boolean,
+        urlPlanPicture: String,
+        maxParticipants: Int,
+    ): ApolloResponse<EditPlanMutation.Data> {
+        return ApolloClientSingleton.instance.apolloClient.mutate(
+            EditPlanMutation(
+                planId = planID,
+                description = Optional.Present(description),
+                title = Optional.Present(title),
+                location = Optional.Present(location),
+                initHour = Optional.Present(initHour),
+                endHour = Optional.Present(endHour),
+                initDate = Optional.Present(initDate),
+                maxParticipants = Optional.Present(maxParticipants),
+                isPublic = Optional.Present(isPublic),
+                urlPlanPicture = Optional.Present(urlPlanPicture)
+            )
+        )
+    }
+
     suspend fun deletePlan(id: Int): ApolloResponse<DeletePlanMutation.Data> {
         return ApolloClientSingleton.instance.apolloClient.mutate(
             DeletePlanMutation(
@@ -43,7 +71,7 @@ object ApolloMutationHandler {
         )
     }
 
-    suspend fun sendFriendRequest(toUsername: String): ApolloResponse<SendFriendRequestMutation.Data>{
+    suspend fun sendFriendRequest(toUsername: String): ApolloResponse<SendFriendRequestMutation.Data> {
         return ApolloClientSingleton.instance.apolloClient.mutate(
             SendFriendRequestMutation(
                 toUsername = toUsername
@@ -51,26 +79,28 @@ object ApolloMutationHandler {
         )
     }
 
-    suspend fun acceptFriendRequest(frId: Int): ApolloResponse<AcceptFriendRequestMutation.Data>{
+    suspend fun acceptFriendRequest(frId: Int): ApolloResponse<AcceptFriendRequestMutation.Data> {
         return ApolloClientSingleton.instance.apolloClient.mutate(
             AcceptFriendRequestMutation(frId = frId)
         )
     }
 
-    suspend fun rejectFriendRequest(frId: Int): ApolloResponse<RejectFriendRequestMutation.Data>{
+    suspend fun rejectFriendRequest(frId: Int): ApolloResponse<RejectFriendRequestMutation.Data> {
         return ApolloClientSingleton.instance.apolloClient.mutate(
             RejectFriendRequestMutation(frId = frId)
         )
     }
 
-    suspend fun participateInPlan(planId: Int): ApolloResponse<ParticipateInPlanMutation.Data>{
+    suspend fun participateInPlan(planId: Int): ApolloResponse<ParticipateInPlanMutation.Data> {
         return ApolloClientSingleton.instance.apolloClient.mutate(
             ParticipateInPlanMutation(planId = planId)
         )
     }
 
-    suspend fun editProfile(publicUsername: String, biography: String,
-                            residence: String, urlProfilePicture: String): ApolloResponse<EditProfileMutation.Data> {
+    suspend fun editProfile(
+        publicUsername: String, biography: String,
+        residence: String, urlProfilePicture: String
+    ): ApolloResponse<EditProfileMutation.Data> {
         return ApolloClientSingleton.instance.apolloClient.mutate(
             EditProfileMutation(
                 publicUsername = Optional.Present(publicUsername),

@@ -14,6 +14,7 @@ import com.graphql.models.DetailedPlanQuery
 import com.planitnow.R
 import com.planitnow.databinding.ActivityCreatePlanBinding
 import com.planitnow.usecases.viewplan.ViewPlanViewModel
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -76,7 +77,7 @@ class EditPlanActivity : AppCompatActivity() {
         )
 
         binding.viewCpButton.setOnClickListener() {
-            editPlan()
+            lifecycleScope.launchWhenResumed { editPlan() }
         }
 
         binding.viewCpInitDate.setOnDateChangeListener { view, year, month, dayOfMonth ->
@@ -88,8 +89,33 @@ class EditPlanActivity : AppCompatActivity() {
         }
     }
 
-    private fun editPlan() {
+    private suspend fun editPlan() {
+        val title = binding.viewCpTitle.text.toString()
+        val description = binding.viewCpDescription.text.toString()
+        val location = binding.viewCpLocation.text.toString()
+        val initHour = binding.viewCpInitHour.text.toString()
+        val initDate = SimpleDateFormat("yyyy-MM-dd").format(calendar.time)
+        val endHour = binding.viewCpEndHour.text.toString()
+        val isPublic = binding.viewCpPublic.isActivated
+        val urlPlanPicture = binding.viewCpImageURL.text.toString()
+        val maxParticipants = binding.viewCpMaxParticipants.text.toString()
 
+        val ok = editPlanViewModel.editPlan(
+            this,
+            title,
+            description,
+            location,
+            initHour,
+            endHour,
+            initDate,
+            isPublic,
+            urlPlanPicture,
+            maxParticipants
+        )
+        if( ok ) {
+            Toast.makeText(this,getText(R.string.success_editing_plan),Toast.LENGTH_SHORT).show()
+            this.finish()
+        }
     }
 
 

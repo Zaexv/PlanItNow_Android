@@ -99,5 +99,6 @@
     <string name="participants">Participantes</string>
     <string name="edit_plan">Editar Plan</string>
     <string name="edit">Editar</string>
+    <string name="success_editing_plan">Se ha editado el plan correctamente.</string>
 
 </resources>
