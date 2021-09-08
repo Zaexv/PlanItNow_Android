@@ -112,10 +112,7 @@ class EditPlanActivity : AppCompatActivity() {
             urlPlanPicture,
             maxParticipants
         )
-        if( ok ) {
-            Toast.makeText(this,getText(R.string.success_editing_plan),Toast.LENGTH_SHORT).show()
-            this.finish()
-        }
+        if(ok) this.finish()
     }
 
 

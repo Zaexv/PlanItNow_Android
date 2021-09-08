@@ -59,7 +59,7 @@ class EditPlanViewModel : ViewModel() {
             Toast.makeText(context, res.errors!![0].message, Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(
-                context, context.getText(R.string.success_edit_profile),
+                context, context.getText(R.string.success_editing_plan),
                 Toast.LENGTH_SHORT
             ).show()
             return true
