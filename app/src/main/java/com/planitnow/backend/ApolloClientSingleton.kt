@@ -10,7 +10,10 @@ class ApolloClientSingleton {
         val instance = ApolloClientSingleton()
     }
 
-    private var SERVER_ADDRESS = "http://127.0.0.1:8000/graphql"
+
+    // Localhost IP in Android is 10.0.2.2:8000
+    // Requires Python Backend Running Locally
+    private var SERVER_ADDRESS = "http://10.0.2.2:8000/graphql"
     private var token = Session.instance.getToken()
 
     var apolloClient =
