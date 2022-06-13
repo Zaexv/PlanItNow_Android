@@ -10,7 +10,7 @@ class ApolloClientSingleton {
         val instance = ApolloClientSingleton()
     }
 
-    private var SERVER_ADDRESS = "https://planitnowalpha.herokuapp.com/graphql"
+    private var SERVER_ADDRESS = "http://127.0.0.1:8000/graphql"
     private var token = Session.instance.getToken()
 
     var apolloClient =
