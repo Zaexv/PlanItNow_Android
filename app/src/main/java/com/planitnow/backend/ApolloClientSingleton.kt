@@ -16,6 +16,9 @@ class ApolloClientSingleton {
     private var SERVER_ADDRESS = "http://10.0.2.2:8000/graphql"
     private var token = Session.instance.getToken()
 
+    //Comit tests
+
+
     var apolloClient =
         ApolloClient(
             networkTransport = HttpNetworkTransport(
